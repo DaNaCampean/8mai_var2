@@ -15,10 +15,23 @@ From Alex:
 -------------------------------------------
 QUESTIONS
     /*
-    1. Top menu stuff care e accesat din multe pagini, gen search, emag, cos, fav
-    2. clasa separata pentru locatori?
-    3. Test???? ultimul: add to cos - asa merge, altfel, daca incerc separat, nu merge
+    1. Top menu stuff care e accesat din multe pagini, gen search, emag, cos, fav - PAGES package
+    si pages se pot structura in mai multe pachete.
+ */
 
 
-*/
+//    2. clasa separata pentru locatori? ---fiecare in clasa lui..
+
+//    3. Test???? ultimul: add to cos - asa merge, altfel, daca incerc separat, nu merge
+
+   //4.  Flights: daca rulez, la final da fail cand apas cautarea
+
+
+ //  5. problema cu new project -  pull - empty pc project- how to repair?
+
+
+
+
+
+
 }
