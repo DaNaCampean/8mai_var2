@@ -43,6 +43,7 @@ public class HomePageTest extends BaseTests {
         System.out.print("CHECK that EMAG opens ok, by Title - ");
         assertEquals(home.getTitle(), "eMAG.ro - Căutarea nu se oprește niciodată", "Verific ca sunt pe partea de start emag"); // doar daca nu e ok apare acest mesaj
         System.out.println("PASSED - landing page EMAG opens correctly");
+
     }
 
 
