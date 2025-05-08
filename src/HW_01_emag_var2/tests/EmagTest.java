@@ -1,55 +1,25 @@
 package HW_01_emag_var2.tests;
 
 import HW_01_emag_var2.base.BasePage_driver_browser_init;
-import HW_01_emag_var2.pages.HomePage;
-import HW_01_emag_var2.pages.CosulMeuPage;
-import HW_01_emag_var2.pages.ProductDetailsPage;
-import HW_01_emag_var2.pages.SearchResultsPage;
-import org.openqa.selenium.By;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
-public class HomePageTest extends BaseTests {
+public class EmagTest extends BaseTests {
 
-
-    //  private HomePage home;
-    //private SearchResultsPage search;
-    //private ProductDetailsPage productDetailsPage;
-    //private CosulMeuPage cosulMeu;
-
-
-  /*  @BeforeTest
-    public void createObjects(){
-        home = new HomePage();
-        //Create object of SearchResultsPage
-        search = new SearchResultsPage();
-        productDetailsPage = new ProductDetailsPage();
-        cosulMeu = new CosulMeuPage();
-        BasePage_driver_browser_init.waitResults();
-
-    }
-    */
 
 
 
 
     @Test
-    public  void checkTitle(){
+    public  void emagTest(){
         //  HomePage home = new HomePage();
         System.out.print("CHECK that EMAG opens ok, by Title - ");
         assertEquals(home.getTitle(), "eMAG.ro - Căutarea nu se oprește niciodată", "Verific ca sunt pe partea de start emag"); // doar daca nu e ok apare acest mesaj
         System.out.println("PASSED - landing page EMAG opens correctly");
 
-    }
 
-
-
-    @Test
-    public void searchAspiratoare(){
         //search for aspiratoare
 
         // search for aspiratoare and submit
@@ -60,10 +30,8 @@ public class HomePageTest extends BaseTests {
         assertEquals(search.getCurrentURL(), "https://www.emag.ro/search/aspiratoare", "The URL for searching results is not correct"); // doar daca nu e ok apare acest mesaj
         System.out.println("PASSED - search results page is displayed");
 
-    }
 
-    @Test
-    public void selectAspirator() {
+
         // Așteaptă pentru rezultate - daca nu pun asta.... nu imi gaseste urmatorul XPath
         BasePage_driver_browser_init.waitResults();
 

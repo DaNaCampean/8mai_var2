@@ -13,8 +13,6 @@ public class BasePage_driver_browser_init {
     public BasePage_driver_browser_init() {
 
         if (driver == null) {
-            //  System.setProperty("webdriver.chrome.driver", "/Users/dana/Desktop/JAVA_automation/3apra25/chromedriver-mac-x64/chromedriver");
-            //  System.setProperty("webdriver.chrome.driver", "D:\\Backup Softvision\\AUTOMATION STUFF\\selenium\\chromedriver-win64\\chromedriver.exe");
             ChromeOptions options = new ChromeOptions();
             options.addArguments("--disable-search-engine-choice-screen");
             driver = new ChromeDriver(options);
