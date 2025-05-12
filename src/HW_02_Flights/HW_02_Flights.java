@@ -83,12 +83,12 @@ public class HW_02_Flights {
         options.addArguments("--disable-search-engine-choice-screen");
 
         // Comment out headless for visibility
-             // options.addArguments("--headless");
+            // options.addArguments("--headless");
 
-       // options.addArguments("user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36");
+        options.addArguments("user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36");
 //using a random User-Agent is a smart way to avoid detection when automating with Selenium, especially for scraping or testing websites with anti-bot measures.
 
-        List<String> userAgents = Arrays.asList(
+     /*   List<String> userAgents = Arrays.asList(
                 "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36",
                 "Mozilla/5.0 (Macintosh; Intel Mac OS X 13_4) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.4 Safari/605.1.15",
                 "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Firefox/113.0",
@@ -98,10 +98,11 @@ public class HW_02_Flights {
         Random rand = new Random();
         String randomUserAgent = userAgents.get(rand.nextInt(userAgents.size()));
         options.addArguments("user-agent=" + randomUserAgent);
-
+        */
           options.addArguments("--disable-blink-features=AutomationControlled");
           options.setExperimentalOption("excludeSwitches", Arrays.asList("enable-automation"));
           options.setExperimentalOption("useAutomationExtension", false);
+          options.setCapability("acceptInsecureCerts", true);
 
 
         WebDriver driver = new ChromeDriver(options);
@@ -236,13 +237,14 @@ public class HW_02_Flights {
 
         driver.findElement(By.xpath("//*[name()='svg' and @data-id='SVG_PLUS__16']")).click();
         driver.findElement(By.xpath("//span[@class='btn__label' and text()='Done']")).click();
-        Thread.sleep(5000);
+        //Thread.sleep(5000);
         WebElement searchFlight = driver.findElement(By.xpath("//div[@class = 'submit-button']"));
-        Thread.sleep(1000);
+       // Thread.sleep(1000);
         // passengers.click();
 
        // actions.click(searchFlight).perform();
         searchFlight.click();
+      // Thread.sleep(5000);
 
         // driver.findElement(By.xpath(" //div[@class = 'submit-button']")).submit();
 
