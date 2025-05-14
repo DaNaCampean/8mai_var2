@@ -35,6 +35,8 @@ import java.util.List;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
+import static org.testng.Assert.assertEquals;
+
 public class HW_02_Flights {
 
     static int targetDay = 0,
@@ -76,8 +78,8 @@ public class HW_02_Flights {
         System.out.println("Jump Month = " + jumpMonthsBy);
         System.out.println("increment = " + increment);
 
-      //   System.setProperty("webdriver.chrome.driver", "/Users/dana/Desktop/JAVA_automation/3apra25/chromedriver-mac-x64/chromedriver");
-       System.setProperty("webdriver.chrome.driver", "D:\\Backup Softvision\\AUTOMATION STUFF\\selenium\\chromedriver-win64\\chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "/Users/dana/Desktop/JAVA_automation/3apra25/chromedriver-mac-x64/chromedriver");
+    //   System.setProperty("webdriver.chrome.driver", "D:\\Backup Softvision\\AUTOMATION STUFF\\selenium\\chromedriver-win64\\chromedriver.exe");
 
 
 
@@ -90,10 +92,10 @@ public class HW_02_Flights {
         // Comment out headless for visibility
             // options.addArguments("--headless");
 
-        options.addArguments("user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36");
+       options.addArguments("user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36");
 //using a random User-Agent is a smart way to avoid detection when automating with Selenium, especially for scraping or testing websites with anti-bot measures.
-
-     /*   List<String> userAgents = Arrays.asList(
+/*
+        List<String> userAgents = Arrays.asList(
                 "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36",
                 "Mozilla/5.0 (Macintosh; Intel Mac OS X 13_4) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.4 Safari/605.1.15",
                 "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Firefox/113.0",
@@ -103,7 +105,7 @@ public class HW_02_Flights {
         Random rand = new Random();
         String randomUserAgent = userAgents.get(rand.nextInt(userAgents.size()));
         options.addArguments("user-agent=" + randomUserAgent);
-        */
+*/
           options.addArguments("--disable-blink-features=AutomationControlled");
           options.setExperimentalOption("excludeSwitches", Arrays.asList("enable-automation"));
           options.setExperimentalOption("useAutomationExtension", false);
@@ -236,7 +238,7 @@ public class HW_02_Flights {
        // driver.findElement(By.xpath("//*[name()='svg' and @data-id = 'SVG_HW_FUNCTIONAL_USER']")).click();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
        WebElement passengers = driver.findElement(By.xpath("//input[@name='farefinder-occupant-selector-flight']"));
-//        Thread.sleep(1000);
+     Thread.sleep(1000);
      // passengers.click();
 
         actions.click(passengers).perform();
@@ -254,6 +256,20 @@ public class HW_02_Flights {
        // actions.click(searchFlight).perform();
         searchFlight.click();
        Thread.sleep(5000);
+
+        System.out.println("ASSERTTTTTT:");
+        //"//text()='Recommended departing flights'"));
+
+        WebElement finalAssert = driver.findElement(By.xpath("//h5[@class='uitk-heading uitk-heading-5']"));
+        System.out.println("xpath = " + finalAssert);
+        String textAsser = finalAssert.getText();
+        assertEquals(finalAssert, "Recommended departing flights<", "Verific ca a mers Search Flights"); // doar daca nu e ok apare acest mesaj
+
+
+        // driver.findElement(By.xpath("//span[@class='btn__label' and text()='Done']")).click();
+       /*
+       <h5 class="uitk-heading uitk-heading-5" data-test-id="listings-header-recommended">Recommended departing flights</h5>
+        */
 
         // driver.findElement(By.xpath(" //div[@class = 'submit-button']")).submit();
 
