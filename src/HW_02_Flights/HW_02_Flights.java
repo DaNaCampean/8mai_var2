@@ -22,9 +22,11 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.interactions.Interaction;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.text.SimpleDateFormat;
+import java.time.Duration;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
@@ -81,6 +83,9 @@ public class HW_02_Flights {
 
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--disable-search-engine-choice-screen");
+        options.addArguments("--incognito");
+        options.addArguments("--disable-application-cache");
+
 
         // Comment out headless for visibility
             // options.addArguments("--headless");
@@ -109,6 +114,7 @@ public class HW_02_Flights {
         //  WebDriver driver = new ChromeDriver();
 
         driver.manage().window().maximize();
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
         driver.get("https://www.hotwire.com/");
 
         driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
@@ -128,11 +134,13 @@ public class HW_02_Flights {
         WebElement searchField = driver.findElement(By.xpath("//input[@class='form-control hw-input hw-input-icon type__400__regular text-ellipsis']"));
         searchField.sendKeys("LAX");
 
-        try {
-            Thread.sleep(5000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        WebElement searchDropDown = driver.findElement(By.xpath("//ul[@class='dropdown-menu large']"));
+
+        // todo: remove this
+//        Select select = new Select(searchDropDown);
+//        System.out.println(select.getOptions());
+//        System.out.println(select.getAllSelectedOptions());
+        System.out.println(searchDropDown.getText());
         searchField.click();
 
         //searchField.sendKeys(Keys.RETURN);
@@ -143,19 +151,21 @@ public class HW_02_Flights {
 
         WebElement searchLAX = driver.findElement(By.xpath("//div[@class='col-xs-12 margin-top-4']/div[@class='location-typeahead']/div[@class='hw-form-group form-group floating-label empty has-icon']/input[@class='form-control hw-input hw-input-icon type__400__regular text-ellipsis']"));
         searchLAX.sendKeys("OTP");
-        try {
-            Thread.sleep(5000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        searchDropDown = driver.findElement(By.xpath("//ul[@class='dropdown-menu large']"));
+        System.out.println(searchDropDown.getText());
+//        try {
+//            Thread.sleep(5000);
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
 
         searchField.click();
 
-        try {
-            Thread.sleep(5000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+//        try {
+//            Thread.sleep(5000);
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
         driver.findElement(By.xpath("   //div[@data-bdd='farefinder-flight-startdate-input']")).click();
 
 
@@ -220,31 +230,30 @@ public class HW_02_Flights {
             }*/
 
 
-        Thread.sleep(1000);
+//        Thread.sleep(1000);
 
         // select two adults:
        // driver.findElement(By.xpath("//*[name()='svg' and @data-id = 'SVG_HW_FUNCTIONAL_USER']")).click();
-
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
        WebElement passengers = driver.findElement(By.xpath("//input[@name='farefinder-occupant-selector-flight']"));
-        Thread.sleep(1000);
+//        Thread.sleep(1000);
      // passengers.click();
 
         actions.click(passengers).perform();
 
-
-
-
-
         driver.findElement(By.xpath("//*[name()='svg' and @data-id='SVG_PLUS__16']")).click();
         driver.findElement(By.xpath("//span[@class='btn__label' and text()='Done']")).click();
-        //Thread.sleep(5000);
+//        Thread.sleep(5000);
+
+      //search flights
+
         WebElement searchFlight = driver.findElement(By.xpath("//div[@class = 'submit-button']"));
-       // Thread.sleep(1000);
+        Thread.sleep(1000);
         // passengers.click();
 
        // actions.click(searchFlight).perform();
         searchFlight.click();
-      // Thread.sleep(5000);
+       Thread.sleep(5000);
 
         // driver.findElement(By.xpath(" //div[@class = 'submit-button']")).submit();
 

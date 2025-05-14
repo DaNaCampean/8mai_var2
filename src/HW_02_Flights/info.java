@@ -54,7 +54,7 @@ Whether you're on mobile or desktop
 Whether to block access if it suspects you're a bot
 
 🎯 Why You Set It in Selenium?
-When you run Chrome via Selenium, it may use a default automation-related User-Agent — or one that's clearly suspicious (like HeadlessChrome). Many websites check this and block or serve captchas.
+When you run Chrcaome via Selenium, it may use a default automation-related User-Agent — or one that's clearly suspicious (like HeadlessChrome). Many websites check this and block or serve captchas.
 
 By manually setting a common User-Agent like this:
 
@@ -76,5 +76,13 @@ Improves compatibility with websites that behave differently based on User-Agent
 Would you like to know how to dynamically pick a random user-agent each time your script runs, for stealthier scraping?
 
 
+
+clase faram _____ underscore
+clasele sa inceapa cu litere mari
+
+explicit wait- cauta cum se face!!!!!! stakeoverflow
+
+
+cache stuff -
      */
 }
