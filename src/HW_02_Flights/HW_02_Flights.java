@@ -202,7 +202,7 @@ public class HW_02_Flights {
         currentDate = LocalDate.now();
         System.out.println("local = " + currentDate);
         // Add 28 days
-        LocalDate targetDate = currentDate.plusDays(14);
+        LocalDate targetDate = currentDate.plusDays(16);
 
         // Format the date if needed
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMMM d, yyyy");
@@ -263,7 +263,8 @@ public class HW_02_Flights {
         WebElement finalAssert = driver.findElement(By.xpath("//h5[@class='uitk-heading uitk-heading-5']"));
         System.out.println("xpath = " + finalAssert);
         String textAsser = finalAssert.getText();
-        assertEquals(finalAssert, "Recommended departing flights<", "Verific ca a mers Search Flights"); // doar daca nu e ok apare acest mesaj
+        System.out.println("getTEXTTT = "+ textAsser);
+        assertEquals(textAsser, "Recommended departing flights<", "Verific ca a mers Search Flights"); // doar daca nu e ok apare acest mesaj
 
 
         // driver.findElement(By.xpath("//span[@class='btn__label' and text()='Done']")).click();
