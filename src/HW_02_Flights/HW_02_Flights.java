@@ -12,7 +12,7 @@ package HW_02_Flights;
 
  */
 
-
+import org.openqa.selenium.Proxy;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -22,12 +22,17 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.interactions.Interaction;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.text.SimpleDateFormat;
+import java.time.Duration;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.Arrays;
 import java.util.Calendar;
+import java.util.List;
+import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
 public class HW_02_Flights {
@@ -75,13 +80,41 @@ public class HW_02_Flights {
        System.setProperty("webdriver.chrome.driver", "D:\\Backup Softvision\\AUTOMATION STUFF\\selenium\\chromedriver-win64\\chromedriver.exe");
 
 
-       // ChromeOptions options = new ChromeOptions();
-      ///  options.addArguments("--disable-search-engine-choice-screen");
 
-      //  WebDriver driver = new ChromeDriver(options);
-        WebDriver driver = new ChromeDriver();
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--disable-search-engine-choice-screen");
+        options.addArguments("--incognito");
+        options.addArguments("--disable-application-cache");
+
+
+        // Comment out headless for visibility
+            // options.addArguments("--headless");
+
+        options.addArguments("user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36");
+//using a random User-Agent is a smart way to avoid detection when automating with Selenium, especially for scraping or testing websites with anti-bot measures.
+
+     /*   List<String> userAgents = Arrays.asList(
+                "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36",
+                "Mozilla/5.0 (Macintosh; Intel Mac OS X 13_4) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.4 Safari/605.1.15",
+                "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Firefox/113.0",
+                "Mozilla/5.0 (Linux; Android 11; SM-G991B) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Mobile Safari/537.36"
+        );
+
+        Random rand = new Random();
+        String randomUserAgent = userAgents.get(rand.nextInt(userAgents.size()));
+        options.addArguments("user-agent=" + randomUserAgent);
+        */
+          options.addArguments("--disable-blink-features=AutomationControlled");
+          options.setExperimentalOption("excludeSwitches", Arrays.asList("enable-automation"));
+          options.setExperimentalOption("useAutomationExtension", false);
+          options.setCapability("acceptInsecureCerts", true);
+
+
+        WebDriver driver = new ChromeDriver(options);
+        //  WebDriver driver = new ChromeDriver();
 
         driver.manage().window().maximize();
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
         driver.get("https://www.hotwire.com/");
 
         driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
@@ -101,11 +134,13 @@ public class HW_02_Flights {
         WebElement searchField = driver.findElement(By.xpath("//input[@class='form-control hw-input hw-input-icon type__400__regular text-ellipsis']"));
         searchField.sendKeys("LAX");
 
-        try {
-            Thread.sleep(5000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        WebElement searchDropDown = driver.findElement(By.xpath("//ul[@class='dropdown-menu large']"));
+
+        // todo: remove this
+//        Select select = new Select(searchDropDown);
+//        System.out.println(select.getOptions());
+//        System.out.println(select.getAllSelectedOptions());
+        System.out.println(searchDropDown.getText());
         searchField.click();
 
         //searchField.sendKeys(Keys.RETURN);
@@ -116,19 +151,21 @@ public class HW_02_Flights {
 
         WebElement searchLAX = driver.findElement(By.xpath("//div[@class='col-xs-12 margin-top-4']/div[@class='location-typeahead']/div[@class='hw-form-group form-group floating-label empty has-icon']/input[@class='form-control hw-input hw-input-icon type__400__regular text-ellipsis']"));
         searchLAX.sendKeys("OTP");
-        try {
-            Thread.sleep(5000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        searchDropDown = driver.findElement(By.xpath("//ul[@class='dropdown-menu large']"));
+        System.out.println(searchDropDown.getText());
+//        try {
+//            Thread.sleep(5000);
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
 
         searchField.click();
 
-        try {
-            Thread.sleep(5000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+//        try {
+//            Thread.sleep(5000);
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
         driver.findElement(By.xpath("   //div[@data-bdd='farefinder-flight-startdate-input']")).click();
 
 
@@ -163,7 +200,7 @@ public class HW_02_Flights {
         currentDate = LocalDate.now();
         System.out.println("local = " + currentDate);
         // Add 28 days
-        LocalDate targetDate = currentDate.plusDays(28);
+        LocalDate targetDate = currentDate.plusDays(14);
 
         // Format the date if needed
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMMM d, yyyy");
@@ -193,29 +230,30 @@ public class HW_02_Flights {
             }*/
 
 
-        Thread.sleep(1000);
+//        Thread.sleep(1000);
 
         // select two adults:
        // driver.findElement(By.xpath("//*[name()='svg' and @data-id = 'SVG_HW_FUNCTIONAL_USER']")).click();
-
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
        WebElement passengers = driver.findElement(By.xpath("//input[@name='farefinder-occupant-selector-flight']"));
-        Thread.sleep(1000);
+//        Thread.sleep(1000);
      // passengers.click();
 
         actions.click(passengers).perform();
 
-
-
-
-
         driver.findElement(By.xpath("//*[name()='svg' and @data-id='SVG_PLUS__16']")).click();
         driver.findElement(By.xpath("//span[@class='btn__label' and text()='Done']")).click();
+//        Thread.sleep(5000);
+
+      //search flights
 
         WebElement searchFlight = driver.findElement(By.xpath("//div[@class = 'submit-button']"));
         Thread.sleep(1000);
         // passengers.click();
 
-        actions.click(searchFlight).perform();
+       // actions.click(searchFlight).perform();
+        searchFlight.click();
+       Thread.sleep(5000);
 
         // driver.findElement(By.xpath(" //div[@class = 'submit-button']")).submit();
 
