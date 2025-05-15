@@ -78,8 +78,8 @@ public class HW_02_Flights {
         System.out.println("Jump Month = " + jumpMonthsBy);
         System.out.println("increment = " + increment);
 
-        System.setProperty("webdriver.chrome.driver", "/Users/dana/Desktop/JAVA_automation/3apra25/chromedriver-mac-x64/chromedriver");
-    //   System.setProperty("webdriver.chrome.driver", "D:\\Backup Softvision\\AUTOMATION STUFF\\selenium\\chromedriver-win64\\chromedriver.exe");
+    //    System.setProperty("webdriver.chrome.driver", "/Users/dana/Desktop/JAVA_automation/3apra25/chromedriver-mac-x64/chromedriver");
+       System.setProperty("webdriver.chrome.driver", "D:\\Backup Softvision\\AUTOMATION STUFF\\selenium\\chromedriver-win64\\chromedriver.exe");
 
 
 
@@ -245,7 +245,7 @@ public class HW_02_Flights {
 
         driver.findElement(By.xpath("//*[name()='svg' and @data-id='SVG_PLUS__16']")).click();
         driver.findElement(By.xpath("//span[@class='btn__label' and text()='Done']")).click();
-//        Thread.sleep(5000);
+      Thread.sleep(5000);
 
       //search flights
 
@@ -259,12 +259,27 @@ public class HW_02_Flights {
 
         System.out.println("ASSERTTTTTT:");
         //"//text()='Recommended departing flights'"));
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
+        Thread.sleep(5000);
 
-        WebElement finalAssert = driver.findElement(By.xpath("//h5[@class='uitk-heading uitk-heading-5']"));
-        System.out.println("xpath = " + finalAssert);
-        String textAsser = finalAssert.getText();
-        System.out.println("getTEXTTT = "+ textAsser);
-        assertEquals(textAsser, "Recommended departing flights<", "Verific ca a mers Search Flights"); // doar daca nu e ok apare acest mesaj
+        //assert first - Los Angeles to Bucharest
+
+//        System.out.println("LosAngelesToOTP = ");
+//        WebElement finalAssert = driver.findElement(By.xpath("//h2[@class='uitk-heading uitk-heading-5']"));
+//
+//        String textAsser = finalAssert.getText();
+//        System.out.println("getTEXTTT = "+ textAsser);
+//        assertEquals(textAsser, "Los Angeles to Bucharest", "Verific ca a mers Search Flights - loading page"); // doar daca nu e ok apare acest mesaj
+
+
+        //Asser second - Recommended
+
+        System.out.println("Final  = ");
+        WebElement finalAssert1 = driver.findElement(By.xpath("//h5[@class='uitk-heading uitk-heading-5']"));
+        System.out.println("xpath = " + finalAssert1);
+        String textAsser1 = finalAssert1.getText();
+        System.out.println("getTEXTTT = "+ textAsser1);
+        assertEquals(textAsser1, "Recommended departing flights", "Verific ca a mers Search Flights"); // doar daca nu e ok apare acest mesaj
 
 
         // driver.findElement(By.xpath("//span[@class='btn__label' and text()='Done']")).click();
