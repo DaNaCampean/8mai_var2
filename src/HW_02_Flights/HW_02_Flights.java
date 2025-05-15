@@ -12,11 +12,7 @@ package HW_02_Flights;
 
  */
 
-import org.openqa.selenium.Proxy;
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.interactions.Actions;
@@ -78,19 +74,19 @@ public class HW_02_Flights {
         System.out.println("Jump Month = " + jumpMonthsBy);
         System.out.println("increment = " + increment);
 
-    //    System.setProperty("webdriver.chrome.driver", "/Users/dana/Desktop/JAVA_automation/3apra25/chromedriver-mac-x64/chromedriver");
-       System.setProperty("webdriver.chrome.driver", "D:\\Backup Softvision\\AUTOMATION STUFF\\selenium\\chromedriver-win64\\chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "/Users/dana/Desktop/JAVA_automation/3apra25/chromedriver-mac-x64/chromedriver");
+    //   System.setProperty("webdriver.chrome.driver", "D:\\Backup Softvision\\AUTOMATION STUFF\\selenium\\chromedriver-win64\\chromedriver.exe");
 
 
 
         ChromeOptions options = new ChromeOptions();
-      // options.addArguments("--disable-search-engine-choice-screen");
+       options.addArguments("--disable-search-engine-choice-screen");
         options.addArguments("--incognito");
         options.addArguments("--disable-application-cache");
 
 
         // Comment out headless for visibility
-            // options.addArguments("--headless");
+          //   options.addArguments("--headless");
 
        options.addArguments("user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36");
 //using a random User-Agent is a smart way to avoid detection when automating with Selenium, especially for scraping or testing websites with anti-bot measures.
@@ -106,10 +102,10 @@ public class HW_02_Flights {
         String randomUserAgent = userAgents.get(rand.nextInt(userAgents.size()));
         options.addArguments("user-agent=" + randomUserAgent);
 */
-          options.addArguments("--disable-blink-features=AutomationControlled");
-          options.setExperimentalOption("excludeSwitches", Arrays.asList("enable-automation"));
-          options.setExperimentalOption("useAutomationExtension", false);
-          options.setCapability("acceptInsecureCerts", true);
+          options.addArguments("--disable-blink-features=AutomationControlled"); //remove browser being controlled by automation.
+          options.setExperimentalOption("excludeSwitches", Arrays.asList("enable-automation"));// also related to prevent the browser is controled by automation
+          options.setExperimentalOption("useAutomationExtension", false);// "remove" automation flag
+          options.setCapability("acceptInsecureCerts", true);//accept insecure certificates
 
 
         WebDriver driver = new ChromeDriver(options);
@@ -174,8 +170,8 @@ public class HW_02_Flights {
         driver.findElement(By.xpath("//*[name()='svg' and @data-id = 'SVG_CHEVRON_RIGHT__16']")).click();
         driver.findElement(By.xpath("//*[name()='svg' and @data-id = 'SVG_CHEVRON_LEFT__16']")).click();
 
-        int dayMe = currentDay + 28;
-        int newday = currentDay + 7;
+        int dayMe = currentDay + 1;
+        int newday = currentDay + 28;
         System.out.println("NEW DAY = " + newday);
 
         System.out.println("X - current day = " + currentDay);
@@ -202,21 +198,24 @@ public class HW_02_Flights {
         currentDate = LocalDate.now();
         System.out.println("local = " + currentDate);
         // Add 28 days
-        LocalDate targetDate = currentDate.plusDays(16);
+        LocalDate startDate = currentDate.plusDays(35);
+        LocalDate endDate = currentDate.plusDays(40);
 
         // Format the date if needed
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMMM d, yyyy");
-        String formattedDate = targetDate.format(formatter);
+        String startDateString = startDate.format(formatter);
+        String endDateString = endDate.format(formatter);
 
-        System.out.println("Target Date after 28 days: " + formattedDate);
+        System.out.println("STARTTT Date = " + startDateString);
+        System.out.println("ENDDDD DATE = " + endDateString);
         // Output: Target Date after 28 days: June 2, 2025
 
 
 
 
-        driver.findElement(By.xpath("//td[@aria-label='" + selectDay + "']")).click();
+        driver.findElement(By.xpath("//td[@aria-label='" + startDateString + "']")).click();
 
-        driver.findElement(By.xpath("//td[@aria-label='" + formattedDate + "']")).click();
+        driver.findElement(By.xpath("//td[@aria-label='" + endDateString + "']")).click();
 
 
 
@@ -270,6 +269,10 @@ public class HW_02_Flights {
        // actions.click(searchFlight).perform();
         searchFlight.click();
 
+       // driver.switchTo().newWindow(WindowType.TAB);
+        String myUrl = driver.getCurrentUrl();
+        driver.get(myUrl);
+
        Thread.sleep(5000);
 
         System.out.println("ASSERTTTTTT:");
@@ -288,7 +291,7 @@ public class HW_02_Flights {
 
 
         //Asser second - Recommended
-
+/*
         System.out.println("Final  = ");
         WebElement finalAssert1 = driver.findElement(By.xpath("//h5[@class='uitk-heading uitk-heading-5']"));
 
