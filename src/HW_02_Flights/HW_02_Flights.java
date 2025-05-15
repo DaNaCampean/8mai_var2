@@ -35,44 +35,44 @@ import static org.testng.Assert.assertEquals;
 
 public class HW_02_Flights {
 
-    static int targetDay = 0,
-            targetMonth = 0,
-            targetYear = 0;
-
-    static int currentDay = 0,
-            currentMonth = 0,
-            currentYear = 0;
-
-    static int jumpMonthsBy = 0;
-    static boolean increment = true;
+//    static int targetDay = 0,
+//            targetMonth = 0,
+//            targetYear = 0;
+//
+//    static int currentDay = 0,
+//            currentMonth = 0,
+//            currentYear = 0;
+//
+//    static int jumpMonthsBy = 0;
+//    static boolean increment = true;
 
     public static void main(String[] args) throws InterruptedException {
 
 
-        String dateToSet = "22/05/2025";
-
-        // get the current date
-        getCurrentDate();
-        System.out.println("current day = " + currentDay);
-        System.out.println("current month = " + currentMonth);
-        System.out.println("current year = " + currentYear);
-
-        System.out.println("TargetDay = " + dateToSet);
-        dateToSet = dateToSet + 7;
-        System.out.println("TargetUpdated =" + dateToSet);
-
-        //GET TARGER date
-        //
-        GetTargetDateMonthAndYear(dateToSet);
-        System.out.println("targetDay = " + targetDay);
-        System.out.println("target Month = " + targetMonth);
-        System.out.println("target year = " + targetYear);
-
-        // get Jump month
-
-        CalculateHowManyMonthsToJump();
-        System.out.println("Jump Month = " + jumpMonthsBy);
-        System.out.println("increment = " + increment);
+//        String dateToSet = "22/05/2025";
+//
+//        // get the current date
+//        getCurrentDate();
+//        System.out.println("current day = " + currentDay);
+//        System.out.println("current month = " + currentMonth);
+//        System.out.println("current year = " + currentYear);
+//
+//        System.out.println("TargetDay = " + dateToSet);
+//        dateToSet = dateToSet + 7;
+//        System.out.println("TargetUpdated =" + dateToSet);
+//
+//        //GET TARGER date
+//        //
+//        GetTargetDateMonthAndYear(dateToSet);
+//        System.out.println("targetDay = " + targetDay);
+//        System.out.println("target Month = " + targetMonth);
+//        System.out.println("target year = " + targetYear);
+//
+//        // get Jump month
+//
+//        CalculateHowManyMonthsToJump();
+//        System.out.println("Jump Month = " + jumpMonthsBy);
+//        System.out.println("increment = " + increment);
 
         System.setProperty("webdriver.chrome.driver", "/Users/dana/Desktop/JAVA_automation/3apra25/chromedriver-mac-x64/chromedriver");
     //   System.setProperty("webdriver.chrome.driver", "D:\\Backup Softvision\\AUTOMATION STUFF\\selenium\\chromedriver-win64\\chromedriver.exe");
@@ -170,16 +170,16 @@ public class HW_02_Flights {
         driver.findElement(By.xpath("//*[name()='svg' and @data-id = 'SVG_CHEVRON_RIGHT__16']")).click();
         driver.findElement(By.xpath("//*[name()='svg' and @data-id = 'SVG_CHEVRON_LEFT__16']")).click();
 
-        int dayMe = currentDay + 1;
-        int newday = currentDay + 28;
-        System.out.println("NEW DAY = " + newday);
-
-        System.out.println("X - current day = " + currentDay);
-        System.out.println("x - target day = current + 7 = " + newday);
-        System.out.println("x- last day = curent +14 = " + dayMe);
-        String selectDay = "May " + newday + ", 2025";
-        System.out.println("selectday = " + selectDay);
-        String selectDayLast = "May " + dayMe + ", 2025";
+//        int dayMe = currentDay + 1;
+//        int newday = currentDay + 28;
+//        System.out.println("NEW DAY = " + newday);
+//
+//        System.out.println("X - current day = " + currentDay);
+//        System.out.println("x - target day = current + 7 = " + newday);
+//        System.out.println("x- last day = curent +14 = " + dayMe);
+//        String selectDay = "May " + newday + ", 2025";
+//        System.out.println("selectday = " + selectDay);
+//        String selectDayLast = "May " + dayMe + ", 2025";
         ;
 
         Calendar cal = Calendar.getInstance();
@@ -187,10 +187,10 @@ public class HW_02_Flights {
         System.out.println("cURRENT month MMM = " + currentMonthMMM);
 
 
-        String.valueOf(currentMonth + dayMe + currentYear);
-
-
-        System.out.println("selectdayLast = " + selectDayLast);
+//        String.valueOf(currentMonth + dayMe + currentYear);
+//
+//
+//        System.out.println("selectdayLast = " + selectDayLast);
 
         System.out.println("-------------------------------------------");
         // Set the current date
@@ -312,41 +312,41 @@ public class HW_02_Flights {
 
 
     }
-
-    public static void getCurrentDate() {
-        Calendar cal = Calendar.getInstance();
-        currentDay = cal.get(Calendar.DAY_OF_MONTH);
-        currentMonth = cal.get(Calendar.MONTH) + 1;
-        // gregorian calendar...si asta arata cu o luna in urma
-        currentYear = cal.get(Calendar.YEAR);
-    }
-
-
-    public static void GetTargetDateMonthAndYear(String dateString) {
-        int firstIndex = dateString.indexOf("/");
-        int lastIndex = dateString.lastIndexOf("/");
-
-        String day = dateString.substring(0, firstIndex);
-        targetDay = Integer.parseInt(day);
-
-        String month = dateString.substring(firstIndex + 1, lastIndex);
-        targetMonth = Integer.parseInt(month);
-
-        String year = dateString.substring(lastIndex + 1, dateString.length());
-        targetYear = Integer.parseInt(year);
-
-    }
-
-    public static void CalculateHowManyMonthsToJump() {
-
-        if ((targetMonth - currentMonth) > 0) {
-            jumpMonthsBy = (targetMonth - currentMonth);
-        } else {
-            jumpMonthsBy = (currentMonth - targetMonth);
-            increment = false;
-
-        }
-
-
-    }
+//
+//    public static void getCurrentDate() {
+//        Calendar cal = Calendar.getInstance();
+//        currentDay = cal.get(Calendar.DAY_OF_MONTH);
+//        currentMonth = cal.get(Calendar.MONTH) + 1;
+//        // gregorian calendar...si asta arata cu o luna in urma
+//        currentYear = cal.get(Calendar.YEAR);
+//    }
+//
+//
+//    public static void GetTargetDateMonthAndYear(String dateString) {
+//        int firstIndex = dateString.indexOf("/");
+//        int lastIndex = dateString.lastIndexOf("/");
+//
+//        String day = dateString.substring(0, firstIndex);
+//        targetDay = Integer.parseInt(day);
+//
+//        String month = dateString.substring(firstIndex + 1, lastIndex);
+//        targetMonth = Integer.parseInt(month);
+//
+//        String year = dateString.substring(lastIndex + 1, dateString.length());
+//        targetYear = Integer.parseInt(year);
+//
+//    }
+//
+//    public static void CalculateHowManyMonthsToJump() {
+//
+//        if ((targetMonth - currentMonth) > 0) {
+//            jumpMonthsBy = (targetMonth - currentMonth);
+//        } else {
+//            jumpMonthsBy = (currentMonth - targetMonth);
+//            increment = false;
+//
+//        }
+//
+//
+//    }
 }
