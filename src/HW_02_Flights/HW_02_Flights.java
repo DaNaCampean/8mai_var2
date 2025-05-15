@@ -261,6 +261,12 @@ public class HW_02_Flights {
         Thread.sleep(5000);
         // passengers.click();
 
+        //click again on Fly from.....to avoid bad gateway
+        searchField = driver.findElement(By.xpath("//input[@class='form-control hw-input hw-input-icon type__400__regular text-ellipsis']"));
+        searchField.click();
+
+
+
        // actions.click(searchFlight).perform();
         searchFlight.click();
 
