@@ -84,7 +84,7 @@ public class HW_02_Flights {
 
 
         ChromeOptions options = new ChromeOptions();
-        options.addArguments("--disable-search-engine-choice-screen");
+      // options.addArguments("--disable-search-engine-choice-screen");
         options.addArguments("--incognito");
         options.addArguments("--disable-application-cache");
 
@@ -237,24 +237,33 @@ public class HW_02_Flights {
         // select two adults:
        // driver.findElement(By.xpath("//*[name()='svg' and @data-id = 'SVG_HW_FUNCTIONAL_USER']")).click();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
+
+
        WebElement passengers = driver.findElement(By.xpath("//input[@name='farefinder-occupant-selector-flight']"));
      Thread.sleep(1000);
      // passengers.click();
+        actions.click(passengers).perform();   // dropdown passengers
 
-        actions.click(passengers).perform();
 
-        driver.findElement(By.xpath("//*[name()='svg' and @data-id='SVG_PLUS__16']")).click();
-        driver.findElement(By.xpath("//span[@class='btn__label' and text()='Done']")).click();
-      Thread.sleep(5000);
+        searchDropDown = driver.findElement(By.xpath("//span[@class='guest-picker__popover Tooltip Tooltip--bottom Tooltip--popover Tooltip--lg in fade']"));
+
+        System.out.println(searchDropDown.getText());
+        searchField.click();
+
+
+        driver.findElement(By.xpath("//*[name()='svg' and @data-id='SVG_PLUS__16']")).click(); // 2xadulti
+        driver.findElement(By.xpath("//span[@class='btn__label' and text()='Done']")).click(); // DONE button
+        Thread.sleep(5000);
 
       //search flights
 
         WebElement searchFlight = driver.findElement(By.xpath("//div[@class = 'submit-button']"));
-        Thread.sleep(1000);
+        Thread.sleep(5000);
         // passengers.click();
 
        // actions.click(searchFlight).perform();
         searchFlight.click();
+
        Thread.sleep(5000);
 
         System.out.println("ASSERTTTTTT:");
@@ -276,7 +285,7 @@ public class HW_02_Flights {
 
         System.out.println("Final  = ");
         WebElement finalAssert1 = driver.findElement(By.xpath("//h5[@class='uitk-heading uitk-heading-5']"));
-        System.out.println("xpath = " + finalAssert1);
+
         String textAsser1 = finalAssert1.getText();
         System.out.println("getTEXTTT = "+ textAsser1);
         assertEquals(textAsser1, "Recommended departing flights", "Verific ca a mers Search Flights"); // doar daca nu e ok apare acest mesaj
