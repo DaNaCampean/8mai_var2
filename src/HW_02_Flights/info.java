@@ -77,6 +77,21 @@ Would you like to know how to dynamically pick a random user-agent each time you
 
 
 
+de la daniela:
+Neata, nu cred ca o sa mearga cu headless, incearca inainte:
+sa iti faci un refactor la cod si sa scapi de: cod duplicat, thread.sleep sa il inlocuiesti cu wait explicit si cand termini,
+ atunci pune wait explicit pt fiecare field inclusiv ca ti se deschide tabul de round trip
+
+Cand codul o sa arate ok, o sa vezi mai usor ce modificari trebuie sa faci
+
+De asemenea, scoate parametrii pt mac si cache si orice alta modificare care schimba browserul pana nu modifici codul
+
+In primul rand va fi mai usor, vei invata mai multe si vei putea face debug uitandu-te
+ la headers si alte elemente pe care acum nu le-ai luat in calcul
+
+O sa iti ia minim o zi, dar vei avea cod valid si eficient pe care sa lucrezi
+
+
 clase faram _____ underscore
 clasele sa inceapa cu litere mari
 
@@ -84,5 +99,35 @@ explicit wait- cauta cum se face!!!!!! stakeoverflow
 
 
 cache stuff -
+atunci singura soluti  nu foarte reliable care am gasito eu ar fi asa: Folosește un proxy rezidențial sau rotativ
+Proxy = IP diferit, dinamic, face ca fiecare rulare să vină "de la alt om"
+Cele gratuite (publice) nu merg bine, dar unele servicii bune oferă trial:
+ScraperAPI
+BrightData (fost Luminati)
+ProxyMesh
+Oxylabs
+Dacă ai buget zero: poți folosi Free Proxy List dar... nu e stabil. Ideal: proxy rotativ rezidențial (cu IP-uri reale, nu de datacenter).
+ScraperAPI - Scale Data Collection with a Simple API
+ScraperAPI handles proxy rotation, browsers, and CAPTCHAs so developers can scrape any page with a single API call. Web scraping with 5,000 free API calls!
+
+si un model de imprelementare selenium cu python
+
+from selenium import webdriver
+
+from selenium.webdriver.chrome.options import Options
+
+chrome_options = Options()
+
+chrome_options.add_argument('--proxy-server=http://your_proxy_ip:port')
+
+driver = webdriver.Chrome(options=chrome_options)
+
+https://www.browserstack.com/guide/launch-browser-in-selenium
+https://www.browserstack.com/guide/run-selenium-tests-using-firefox-driver
+
+
+
+
+
      */
 }
