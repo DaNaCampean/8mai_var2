@@ -23,11 +23,9 @@ import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.Arrays;
 import java.util.Calendar;
-import java.util.concurrent.TimeUnit;
 
-import org.openqa.selenium.firefox.FirefoxDriver;
+
 
 
 public class HW02FlightsRefactor {
@@ -36,7 +34,8 @@ public class HW02FlightsRefactor {
     public static void main(String[] args) throws InterruptedException {
 
 
-        System.setProperty("webdriver.chrome.driver", "D:\\Backup Softvision\\AUTOMATION STUFF\\selenium\\chromedriver-win64\\chromedriver.exe");
+      //  System.setProperty("webdriver.chrome.driver", "D:\\Backup Softvision\\AUTOMATION STUFF\\selenium\\chromedriver-win64\\chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "C:\\Users\\campe\\Downloads\\Automation\\chromedriver-win64\\chromedriver.exe");
 
 
       //  ChromeOptions options = new ChromeOptions();
@@ -88,18 +87,21 @@ public class HW02FlightsRefactor {
 //        Select select = new Select(searchDropDown);
 //        System.out.println(select.getOptions());
 //        System.out.println(select.getAllSelectedOptions());
-        System.out.println(searchDropDown.getText());
+      //  Select mySelect = new Select(searchDropDown);
+
+     //   System.out.println(searchDropDown.getText());
+     //   System.out.println("de selectat = " + mySelect.getFirstSelectedOption().getText());
         searchField.click();
 
 
         String text = searchField.getText();
-        System.out.println("Textul de la FROM ESTE: " + searchField.getText());
+        System.out.println("Textul de la FROM ESTE: " + searchDropDown.getText());
 
 
         WebElement searchLAX = driver.findElement(By.xpath("//div[@class='col-xs-12 margin-top-4']/div[@class='location-typeahead']/div[@class='hw-form-group form-group floating-label empty has-icon']/input[@class='form-control hw-input hw-input-icon type__400__regular text-ellipsis']"));
         searchLAX.sendKeys("OTP");
         searchDropDown = driver.findElement(By.xpath("//ul[@class='dropdown-menu large']"));
-        System.out.println(searchDropDown.getText());
+        System.out.println("textttt otp? = "+ searchDropDown.getText());
 
 
         searchField.click();
@@ -155,18 +157,13 @@ public class HW02FlightsRefactor {
         actions.click(passengers).perform();   // dropdown passengers
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
 
-        searchDropDown = driver.findElement(By.xpath("//span[@class='guest-picker__popover Tooltip Tooltip--bottom Tooltip--popover Tooltip--lg in fade']"));
-
-        System.out.println(searchDropDown.getText());
-        searchField.click();
 
 
         driver.findElement(By.xpath("//*[name()='svg' and @data-id='SVG_PLUS__16']")).click(); // 2xadulti
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
         driver.findElement(By.xpath("//span[@class='btn__label' and text()='Done']")).click(); // DONE button
 
 
-        //Thread.sleep(5000);
+
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
 
 
@@ -179,9 +176,6 @@ public class HW02FlightsRefactor {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
         // passengers.click();
 
-        //click again on Fly from.....to avoid bad gateway
-        searchField = driver.findElement(By.xpath("//input[@class='form-control hw-input hw-input-icon type__400__regular text-ellipsis']"));
-        searchField.click();
 
 
         // actions.click(searchFlight).perform();
