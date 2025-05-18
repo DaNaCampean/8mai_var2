@@ -17,6 +17,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.interactions.Actions;
 
 import java.text.SimpleDateFormat;
@@ -25,7 +26,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 
-
+import static org.testng.Assert.assertEquals;
 
 
 public class HW02FlightsRefactor {
@@ -78,8 +79,8 @@ public class HW02FlightsRefactor {
         actions.doubleClick(flightsClick).perform();
 
 
-        WebElement searchField = driver.findElement(By.xpath("//input[@class='form-control hw-input hw-input-icon type__400__regular text-ellipsis']"));
-        searchField.sendKeys("LAX");
+        WebElement searchFieldFrom = driver.findElement(By.xpath("//input[@class='form-control hw-input hw-input-icon type__400__regular text-ellipsis']"));
+        searchFieldFrom.sendKeys("LAX");
 
         WebElement searchDropDown = driver.findElement(By.xpath("//ul[@class='dropdown-menu large']"));
 
@@ -91,22 +92,29 @@ public class HW02FlightsRefactor {
 
      //   System.out.println(searchDropDown.getText());
      //   System.out.println("de selectat = " + mySelect.getFirstSelectedOption().getText());
-        searchField.click();
+        searchFieldFrom.click();
 
 
-        String text = searchField.getText();
+        String text = searchFieldFrom.getText();
         System.out.println("Textul de la FROM ESTE: " + searchDropDown.getText());
 
 
-        WebElement searchLAX = driver.findElement(By.xpath("//div[@class='col-xs-12 margin-top-4']/div[@class='location-typeahead']/div[@class='hw-form-group form-group floating-label empty has-icon']/input[@class='form-control hw-input hw-input-icon type__400__regular text-ellipsis']"));
-        searchLAX.sendKeys("OTP");
+        WebElement searchFieldTo = driver.findElement(By.xpath("//div[@class='col-xs-12 margin-top-4']/div[@class='location-typeahead']/div[@class='hw-form-group form-group floating-label empty has-icon']/input[@class='form-control hw-input hw-input-icon type__400__regular text-ellipsis']"));
+        searchFieldTo.sendKeys("Bucharest");
         searchDropDown = driver.findElement(By.xpath("//ul[@class='dropdown-menu large']"));
+
         System.out.println("textttt otp? = "+ searchDropDown.getText());
+        searchDropDown = driver.findElement(By.xpath("//li[a[contains(text(), 'BUH')]]"));
+        System.out.println("SELECTED ONE? = "+ searchDropDown.getText());
+        // searchField.click();
+        searchDropDown.click();
 
 
-        searchField.click();
 
 
+        // //ul[@class='dropdown-menu large typeahead-scroll']/li[a[contains(text(), 'BUH')]]
+
+        // click date
         driver.findElement(By.xpath("   //div[@data-bdd='farefinder-flight-startdate-input']")).click();
 
 
@@ -125,8 +133,8 @@ public class HW02FlightsRefactor {
         currentDate = LocalDate.now();
         System.out.println("local = " + currentDate);
         // Add 28 days
-        LocalDate startDate = currentDate.plusDays(35);
-        LocalDate endDate = currentDate.plusDays(40);
+        LocalDate startDate = currentDate.plusDays(7);
+        LocalDate endDate = currentDate.plusDays(14);
 
         // Format the date if needed
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMMM d, yyyy");
@@ -135,7 +143,7 @@ public class HW02FlightsRefactor {
 
         System.out.println("STARTTT Date = " + startDateString);
         System.out.println("ENDDDD DATE = " + endDateString);
-        // Output: Target Date after 28 days: June 2, 2025
+
 
 
         driver.findElement(By.xpath("//td[@aria-label='" + startDateString + "']")).click();
@@ -147,9 +155,6 @@ public class HW02FlightsRefactor {
 
 
         WebElement passengers = driver.findElement(By.xpath("//input[@name='farefinder-occupant-selector-flight']"));
-
-        //Thread.sleep(1000);
-
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(1));
 
 
@@ -170,31 +175,34 @@ public class HW02FlightsRefactor {
         //search flights
 
         WebElement searchFlight = driver.findElement(By.xpath("//div[@class = 'submit-button']"));
-
-
-        // Thread.sleep(5000);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
         // passengers.click();
 
-
-
-        // actions.click(searchFlight).perform();
-        searchFlight.click();
+        actions.click(searchFlight).perform();
+      //  searchFlight.click();
 
         // driver.switchTo().newWindow(WindowType.TAB);
         String myUrl = driver.getCurrentUrl();
         driver.get(myUrl);
+
+
 
         //  Thread.sleep(5000);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
 
         System.out.println("ASSERTTTTTT:");
         //"//text()='Recommended departing flights'"));
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
 
-        // Thread.sleep(5000);
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
+        //<span class="">Choose departing flight</span>
+      //  driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
 
+        WebElement assertfinal = driver.findElement(By.xpath("//span[contains(text(),'Choose departing fligh')]"));
+        String textAsser = assertfinal.getText();
+        System.out.println("getTEXTTT = "+ textAsser);
+       assertEquals(textAsser, "Choose departing fligh", "Verific ca a mers Search Flights - loading page"); // doar daca nu e ok apare acest mesaj
+
+        FirefoxDriver newbr = new FirefoxDriver();
+        newbr.get(myUrl);
         //assert first - Los Angeles to Bucharest
 
 //        System.out.println("LosAngelesToOTP = ");
@@ -204,7 +212,7 @@ public class HW02FlightsRefactor {
 //        System.out.println("getTEXTTT = "+ textAsser);
 //        assertEquals(textAsser, "Los Angeles to Bucharest", "Verific ca a mers Search Flights - loading page"); // doar daca nu e ok apare acest mesaj
 
-
+//<span class="">Choose departing flight</span>
         //Asser second - Recommended
 /*
         System.out.println("Final  = ");
