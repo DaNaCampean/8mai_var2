@@ -125,6 +125,14 @@ driver = webdriver.Chrome(options=chrome_options)
 https://www.browserstack.com/guide/launch-browser-in-selenium
 https://www.browserstack.com/guide/run-selenium-tests-using-firefox-driver
 
+base – setup și teardown
+
+pages – clasele pentru pagini
+
+utils – utilitare comune (e.g., waits, screenshot)
+
+tests – clasele de test
+
 
 
 

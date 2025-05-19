@@ -31,6 +31,7 @@ public class TopMenu {
 
     public void gotoHome() {
 
+        driver.quit();
     }
 
     public void gotoFeeds() {
