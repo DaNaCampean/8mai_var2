@@ -13,12 +13,17 @@ public class BasePageDriverInitialization {
     // constructor
 
     public BasePageDriverInitialization() {
+
+        if (driver == null) {  // daca nu pun acest null, se deschide browserul de 2 ori: odata pentru home page si o data pentru FLIGHTS PAGE din baseTest create objects
+
             System.out.println("INITIALIZATION ");
             ChromeOptions options = new ChromeOptions();
             options.addArguments("--disable-search-engine-choice-screen");
             driver = new ChromeDriver(options);
             driver.manage().window().maximize();
-           driver.get("https://hotwire.com");
+            driver.get("https://hotwire.com");
+
+        }
 
   }
 

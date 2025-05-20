@@ -1,6 +1,7 @@
 package HW_02_Flights.tests;
 
 
+import HW_02_Flights.pages.FlightsPage;
 import HW_02_Flights.pages.HomePage;
 import HW_02_Flights.base.BasePageDriverInitialization;
 import org.testng.annotations.AfterSuite;
@@ -9,6 +10,8 @@ import org.testng.annotations.BeforeTest;
 
 public class BaseTest {
     public HomePage home;
+    public FlightsPage flights;
+
 
 
     @BeforeSuite
@@ -22,15 +25,16 @@ public class BaseTest {
 //
     @BeforeTest
     public void createObjects(){
-        home = new HomePage();
+       home = new HomePage();
+       flights = new FlightsPage();
 
     }
 
     @AfterSuite
     public void driverQuit(){
         System.out.println("sunt in teardown from base test");
-      //  BasePageDriverInitialization.driverQuit();
-        BasePageDriverInitialization.driverQuit();
+
+       // BasePageDriverInitialization.driverQuit();
 
     }
 }

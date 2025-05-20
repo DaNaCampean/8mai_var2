@@ -1,94 +1,33 @@
-package HW_02_Flights;
+/* package HW_02_Flights;
 
-/*
-
-1. https://www.hotwire.com/
-2. Flights
-3. From LAX
-4. To Bucharest Otopeni
-5. From date - 7 days from today
-6. To date - 14 days from today
-7. 2 adults
-
- */
-
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.interactions.Actions;
-
-import java.text.SimpleDateFormat;
-import java.time.Duration;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.util.Calendar;
-
-import static org.testng.Assert.assertEquals;
+empty:
+<div class="location-typeahead"><label class="heading-300">Fly to</label><div class="hw-form-group form-group floating-label empty has-icon">                 <input class="form-control hw-input hw-input-icon type__400__regular text-ellipsis" aria-invalid="false" aria-label="" placeholder="Destination city or airport" data-bdd="farefinder-flight-destination-input" id="" type="text" autocomplete="#$%^@#$$#" value=""                                                                  data-gtm-form-interact-field-id="1"><label class="has-icon" for=""></label><span class="form-control-icon"><span class="SVGIcon"><svg focusable="false" data-id="SVG_HW_FUNCTIONAL_PIN" width="16px" height="16px" viewBox="0 0 16 16"><path stroke="none" fill="currentColor" id="a" d="M7.855 7.153A1.814 1.814 0 0 1 5.72 5.025a1.814 1.814 0 0 1 1.426-1.42A1.814 1.814 0 0 1 9.28 5.733a1.814 1.814 0 0 1-1.426 1.42M7.53 0H7.47C4.442 0 2 2.593 2 5.706 2 10.91 5.948 14.8 7.155 15.869a.517.517 0 0 0 .69 0C9.05 14.8 13 10.91 13 5.706 13 2.593 10.6 0 7.529 0"></path></svg></span></span></div></div>
+filled:
+<div class="location-typeahead"><label class="heading-300">Fly to</label><div class="hw-form-group form-group floating-label not-empty has-icon has-feedback"><input class="form-control hw-input hw-input-icon type__400__regular text-ellipsis" aria-invalid="false" aria-label="" placeholder="Destination city or airport" data-bdd="farefinder-flight-destination-input" id="" type="text" autocomplete="#$%^@#$$#" value="Los Angeles, CA, United States of America (LAX-Los Angeles Intl.)" data-gtm-form-interact-field-id="1"><label class="has-icon" for=""></label><span class="form-control-icon"><span class="SVGIcon"><svg focusable="false" data-id="SVG_HW_FUNCTIONAL_PIN" width="16px" height="16px" viewBox="0 0 16 16"><path stroke="none" fill="currentColor" id="a" d="M7.855 7.153A1.814 1.814 0 0 1 5.72 5.025a1.814 1.814 0 0 1 1.426-1.42A1.814 1.814 0 0 1 9.28 5.733a1.814 1.814 0 0 1-1.426 1.42M7.53 0H7.47C4.442 0 2 2.593 2 5.706 2 10.91 5.948 14.8 7.155 15.869a.517.517 0 0 0 .69 0C9.05 14.8 13 10.91 13 5.706 13 2.593 10.6 0 7.529 0"></path></svg></span></span><span class="form-control-feedback"><div><span class="SVGIcon"><svg focusable="false" data-id="SVG_HW_FUNCTIONAL_RESET" width="16px" height="16px" viewBox="0 0 16 16"><path stroke="none" fill="currentColor" id="a" d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm3.063-12.48l1.508 1.508-3.017 3.018 3.017 3.017-1.508 1.508-3.018-3.017-3.017 3.017-1.508-1.508 3.017-3.018L3.52 5.028 5.028 3.52l3.017 3.017 3.018-3.017z"></path></svg></span></div></span></div></div>
 
 
-public class toBeDel {
+//div[@class='location-typeahead']///input[@class='form-control hw-input hw-input-icon type__400__regular text-ellipsis']
 
 
-    public static void main(String[] args) throws InterruptedException {
+//div[@class='location-typeahead']/label[@class='heading-300' and text()='Fly to']/input[@class='form-control hw-input hw-input-icon type__400__regular text-ellipsis']
+
+/
+//span[@class='btn__label' and text()='Done']"
 
 
-        System.setProperty("webdriver.chrome.driver", "D:\\Backup Softvision\\AUTOMATION STUFF\\selenium\\chromedriver-win64\\chromedriver.exe");
-     //   System.setProperty("webdriver.chrome.driver", "C:\\Users\\campe\\Downloads\\Automation\\chromedriver-win64\\chromedriver.exe");
-      //  System.setProperty("webdriver.chrome.driver", "/Users/dana/Desktop/JAVA_automation/3apra25/chromedriver-mac-x64/chromedriver");
-
-
-        //  ChromeOptions options = new ChromeOptions();
-        //  options.addArguments("--disable-search-engine-choice-screen");
-        // options.addArguments("--incognito");
-        //  options.addArguments("--disable-application-cache");
-
-
-        // Comment out headless for visibility
-        //   options.addArguments("--headless");
-
-      //  options.addArguments("user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36");
-
-      //  options.addArguments("--disable-blink-features=AutomationControlled"); //remove browser being controlled by automation.
-      //  options.setExperimentalOption("excludeSwitches", Arrays.asList("enable-automation"));// also related to prevent the browser is controled by automation
-     //   options.setExperimentalOption("useAutomationExtension", false);// "remove" automation flag
-     //   options.setCapability("acceptInsecureCerts", true);//accept insecure certificates
-
-
-      //  WebDriver driver = new ChromeDriver(options);
-     //   WebDriver driver = new FirefoxDriver();
-        WebDriver driver = new ChromeDriver();
-
-
-
-        driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
-        driver.get("https://www.hotwire.com/");
-
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
-
-        //click on Flights tab - double click
-        WebElement flightsClick = driver.findElement(By.xpath("//div[@data-bdd = 'farefinder-option-flights' and @class = 'farefinder-option inactive']"));
-
-
-        // Instantiate the Actions class needed for double click
-        Actions actions = new Actions(driver);
-
-        // Perform double-click
-        actions.doubleClick(flightsClick).perform();
-
-
+       // click on field
         WebElement searchFieldFrom = driver.findElement(By.xpath("//input[@class='form-control hw-input hw-input-icon type__400__regular text-ellipsis']"));
+        WebElement searchFieldTo =  driver.findElement(By.xpath("//div[@class='col-xs-12 margin-top-4']/div[@class='location-typeahead']/div[@class='hw-form-group form-group floating-label empty has-icon']/input[@class='form-control hw-input hw-input-icon type__400__regular text-ellipsis']"));
+
+to: //div[@class='col-xs-12 margin-top-4']/div[@class='location-typeahead']/input[@class='form-control hw-input hw-input-icon type__400__regular text-ellipsis']
+
+
         searchFieldFrom.sendKeys("LAX");
 
+       text field drop down?
         WebElement searchDropDown = driver.findElement(By.xpath("//ul[@class='dropdown-menu large']"));
 
-        // todo: remove this
-//        Select select = new Select(searchDropDown);
-//        System.out.println(select.getOptions());
-//        System.out.println(select.getAllSelectedOptions());
-      //  Select mySelect = new Select(searchDropDown);
+
 
      //   System.out.println(searchDropDown.getText());
      //   System.out.println("de selectat = " + mySelect.getFirstSelectedOption().getText());
@@ -236,7 +175,4 @@ public class toBeDel {
 
         // driver.quit();
 
-
-    }
-}
 
