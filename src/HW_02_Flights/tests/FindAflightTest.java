@@ -19,34 +19,39 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.Assert;
+import org.testng.annotations.Test;
 
 import java.time.Duration;
 
-public class FindAflightTest {
+import static org.testng.Assert.assertEquals;
 
+public class FindAflightTest extends BaseTest {
 
-    public static void main(String[] args) throws InterruptedException {
+    @Test
+    public  void flightsTest(){
 
-
-
-        WebDriver driver;
-
-        //Creating object of home page
-        HomePage home = new HomePage();
-        home.setup();
-
-
-        driver.get("https://www.hotwire.com/");
-
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
-
-
-
-        // Verify current URL
+        // Verify that correct URL, hotwire.com opens.
         String myURL = home.getUrl();
         System.out.println("URL = " + myURL);
         Assert.assertEquals(myURL, "https://www.hotwire.com/", "Verific ca s-a accesat pagina corecta");
-        System.out.println("Passed - correct URL: " + myURL);
+        System.out.println("Passed - correct URL: " + myURL + "opens");
+
+        // Verify that "Flights Tab was selected
+
+        //Fly from: LAX
+
+        // Fly To: Bucharest Otopeni
+
+        // From date - 7 days from today
+
+        // To date - 14 days from today
+
+        // 2 adults
+
+        // search flights
+
+
+        home.waitForPageToBeLoaded();
 
 
 

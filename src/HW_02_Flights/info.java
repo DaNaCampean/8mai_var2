@@ -134,6 +134,10 @@ utils – utilitare comune (e.g., waits, screenshot)
 tests – clasele de test
 
 
+learn:
+
+LA WAITURI MAI BINE ASTEPTAM DUPA UN ELEMENT SA APARA PE PAGINA IN LOC DE WAITUL MEU CU 3 SEC
+URL se pune in pagina specifica de ex, sau o clasa speciala cu URLs
 
 
 

@@ -12,6 +12,7 @@ public class BasePage_driver_browser_init {
 
     public BasePage_driver_browser_init() {
 
+        System.out.println("sunt in basepage init browser");
         if (driver == null) {
             ChromeOptions options = new ChromeOptions();
             options.addArguments("--disable-search-engine-choice-screen");
