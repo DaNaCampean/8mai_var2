@@ -35,25 +35,32 @@ public class FlightsPage extends BasePageDriverInitialization {
         if (textFieldNumber == 1) {
             searchTextField = driver.findElement(searchFlyFromTextField);
             searchTextField.sendKeys(text);
+            searchTextField.click();
 
             Utils.implicitlyWaitThreeSeconds();
             searchDropDown = driver.findElement(By.xpath("//ul[@class='dropdown-menu large']"));
-            searchDropDown = driver.findElement(By.xpath("//li[a[contains(text(), 'LAX')]]"));
-
+          //  System.out.println("textttt first field? = "+ searchDropDown.getText());
+           // searchDropDown = driver.findElement(By.xpath("//li[a[contains(text(), 'LAX')]]"));
+          //  System.out.println("textttt first field? = "+ searchDropDown.getText());
+           // System.out.printf("textttt otp? = %s%n", searchDropDown.getTagName());
         } else {
             searchTextField = driver.findElement(searchFlyToTextField);
             searchTextField.sendKeys(text);
             Utils.implicitlyWaitThreeSeconds();
             searchDropDown = driver.findElement(By.xpath("//ul[@class='dropdown-menu large']"));
-            searchDropDown = driver.findElement(By.xpath("//li[a[contains(text(), 'BUH')]]"));
+            System.out.println("textttt otp? = "+ searchDropDown.getText());
+            searchDropDown = driver.findElement(By.xpath("//li[a[contains(text(), 'OTP')]]"));
+            System.out.printf("textttt otp? = %s%n", searchDropDown.getTagName());
+            System.out.printf("textttt otp? ="+searchDropDown.getAccessibleName());
         }
 
 
-        clickOnFlyTextField(searchDropDown);
+        searchDropDown.click();
 
     }
     public void clickOnFlyTextField(WebElement searchDropDown) {
          searchDropDown.click();
+
     }
 }
 

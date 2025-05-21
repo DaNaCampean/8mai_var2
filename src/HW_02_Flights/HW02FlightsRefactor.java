@@ -19,6 +19,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.Select;
 
 import java.text.SimpleDateFormat;
 import java.time.Duration;
@@ -35,8 +36,8 @@ public class HW02FlightsRefactor {
     public static void main(String[] args) throws InterruptedException {
 
 
-        System.setProperty("webdriver.chrome.driver", "D:\\Backup Softvision\\AUTOMATION STUFF\\selenium\\chromedriver-win64\\chromedriver.exe");
-     //   System.setProperty("webdriver.chrome.driver", "C:\\Users\\campe\\Downloads\\Automation\\chromedriver-win64\\chromedriver.exe");
+      //  System.setProperty("webdriver.chrome.driver", "D:\\Backup Softvision\\AUTOMATION STUFF\\selenium\\chromedriver-win64\\chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "C:\\Users\\campe\\Downloads\\Automation\\chromedriver-win64\\chromedriver.exe");
       //  System.setProperty("webdriver.chrome.driver", "/Users/dana/Desktop/JAVA_automation/3apra25/chromedriver-mac-x64/chromedriver");
 
 
@@ -86,13 +87,13 @@ public class HW02FlightsRefactor {
         WebElement searchDropDown = driver.findElement(By.xpath("//ul[@class='dropdown-menu large']"));
 
         // todo: remove this
-//        Select select = new Select(searchDropDown);
+     //  Select select = new Select(searchDropDown);
 //        System.out.println(select.getOptions());
 //        System.out.println(select.getAllSelectedOptions());
-      //  Select mySelect = new Select(searchDropDown);
+      // Select mySelect = new Select(searchDropDown);
 
-     //   System.out.println(searchDropDown.getText());
-     //   System.out.println("de selectat = " + mySelect.getFirstSelectedOption().getText());
+   //  System.out.println(searchDropDown.getText());
+    //    System.out.println("de selectat = " + mySelect.getFirstSelectedOption().getText());
         searchFieldFrom.click();
 
 
@@ -102,6 +103,7 @@ public class HW02FlightsRefactor {
 
         WebElement searchFieldTo = driver.findElement(By.xpath("//div[@class='col-xs-12 margin-top-4']/div[@class='location-typeahead']/div[@class='hw-form-group form-group floating-label empty has-icon']/input[@class='form-control hw-input hw-input-icon type__400__regular text-ellipsis']"));
         searchFieldTo.sendKeys("Bucharest");
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
         searchDropDown = driver.findElement(By.xpath("//ul[@class='dropdown-menu large']"));
 
         System.out.println("textttt otp? = "+ searchDropDown.getText());

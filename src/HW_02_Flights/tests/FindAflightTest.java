@@ -44,7 +44,7 @@ public class FindAflightTest extends BaseTest {
 
         //Fly from: LAX
 
-      //  flights.FillFlyTextField("LAX",1);
+        flights.FillFlyTextField("LAX",1);
 
 
         // Fly To: Bucharest Otopeni
