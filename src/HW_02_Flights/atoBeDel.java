@@ -1,25 +1,6 @@
 /* package HW_02_Flights;
 
-empty:
-<div class="location-typeahead"><label class="heading-300">Fly to</label><div class="hw-form-group form-group floating-label empty has-icon">                 <input class="form-control hw-input hw-input-icon type__400__regular text-ellipsis" aria-invalid="false" aria-label="" placeholder="Destination city or airport" data-bdd="farefinder-flight-destination-input" id="" type="text" autocomplete="#$%^@#$$#" value=""                                                                  data-gtm-form-interact-field-id="1"><label class="has-icon" for=""></label><span class="form-control-icon"><span class="SVGIcon"><svg focusable="false" data-id="SVG_HW_FUNCTIONAL_PIN" width="16px" height="16px" viewBox="0 0 16 16"><path stroke="none" fill="currentColor" id="a" d="M7.855 7.153A1.814 1.814 0 0 1 5.72 5.025a1.814 1.814 0 0 1 1.426-1.42A1.814 1.814 0 0 1 9.28 5.733a1.814 1.814 0 0 1-1.426 1.42M7.53 0H7.47C4.442 0 2 2.593 2 5.706 2 10.91 5.948 14.8 7.155 15.869a.517.517 0 0 0 .69 0C9.05 14.8 13 10.91 13 5.706 13 2.593 10.6 0 7.529 0"></path></svg></span></span></div></div>
-filled:
-<div class="location-typeahead"><label class="heading-300">Fly to</label><div class="hw-form-group form-group floating-label not-empty has-icon has-feedback"><input class="form-control hw-input hw-input-icon type__400__regular text-ellipsis" aria-invalid="false" aria-label="" placeholder="Destination city or airport" data-bdd="farefinder-flight-destination-input" id="" type="text" autocomplete="#$%^@#$$#" value="Los Angeles, CA, United States of America (LAX-Los Angeles Intl.)" data-gtm-form-interact-field-id="1"><label class="has-icon" for=""></label><span class="form-control-icon"><span class="SVGIcon"><svg focusable="false" data-id="SVG_HW_FUNCTIONAL_PIN" width="16px" height="16px" viewBox="0 0 16 16"><path stroke="none" fill="currentColor" id="a" d="M7.855 7.153A1.814 1.814 0 0 1 5.72 5.025a1.814 1.814 0 0 1 1.426-1.42A1.814 1.814 0 0 1 9.28 5.733a1.814 1.814 0 0 1-1.426 1.42M7.53 0H7.47C4.442 0 2 2.593 2 5.706 2 10.91 5.948 14.8 7.155 15.869a.517.517 0 0 0 .69 0C9.05 14.8 13 10.91 13 5.706 13 2.593 10.6 0 7.529 0"></path></svg></span></span><span class="form-control-feedback"><div><span class="SVGIcon"><svg focusable="false" data-id="SVG_HW_FUNCTIONAL_RESET" width="16px" height="16px" viewBox="0 0 16 16"><path stroke="none" fill="currentColor" id="a" d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm3.063-12.48l1.508 1.508-3.017 3.018 3.017 3.017-1.508 1.508-3.018-3.017-3.017 3.017-1.508-1.508 3.017-3.018L3.52 5.028 5.028 3.52l3.017 3.017 3.018-3.017z"></path></svg></span></div></span></div></div>
 
-
-//div[@class='location-typeahead']///input[@class='form-control hw-input hw-input-icon type__400__regular text-ellipsis']
-
-
-//div[@class='location-typeahead']/label[@class='heading-300' and text()='Fly to']/input[@class='form-control hw-input hw-input-icon type__400__regular text-ellipsis']
-
-/
-//span[@class='btn__label' and text()='Done']"
-
-
-       // click on field
-        WebElement searchFieldFrom = driver.findElement(By.xpath("//input[@class='form-control hw-input hw-input-icon type__400__regular text-ellipsis']"));
-        WebElement searchFieldTo =  driver.findElement(By.xpath("//div[@class='col-xs-12 margin-top-4']/div[@class='location-typeahead']/div[@class='hw-form-group form-group floating-label empty has-icon']/input[@class='form-control hw-input hw-input-icon type__400__regular text-ellipsis']"));
-
-to: //div[@class='col-xs-12 margin-top-4']/div[@class='location-typeahead']/input[@class='form-control hw-input hw-input-icon type__400__regular text-ellipsis']
 
 
         searchFieldFrom.sendKeys("LAX");

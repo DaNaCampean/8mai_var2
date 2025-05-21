@@ -44,10 +44,11 @@ public class FindAflightTest extends BaseTest {
 
         //Fly from: LAX
 
-        flights.clickOnFlyTextField("LAX");
+        flights.FillFlyTextField("LAX",1);
 
 
         // Fly To: Bucharest Otopeni
+        flights.FillFlyTextField("Bucharest",2);
 
         // From date - 7 days from today
 
