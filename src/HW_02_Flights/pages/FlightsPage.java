@@ -35,18 +35,21 @@ public class FlightsPage extends BasePageDriverInitialization {
         if (textFieldNumber == 1) {
             searchTextField = driver.findElement(searchFlyFromTextField);
             searchTextField.sendKeys(text);
+
+            Utils.implicitlyWaitThreeSeconds();
             searchDropDown = driver.findElement(By.xpath("//ul[@class='dropdown-menu large']"));
             searchDropDown = driver.findElement(By.xpath("//li[a[contains(text(), 'LAX')]]"));
 
         } else {
             searchTextField = driver.findElement(searchFlyToTextField);
             searchTextField.sendKeys(text);
+            Utils.implicitlyWaitThreeSeconds();
             searchDropDown = driver.findElement(By.xpath("//ul[@class='dropdown-menu large']"));
             searchDropDown = driver.findElement(By.xpath("//li[a[contains(text(), 'BUH')]]"));
         }
 
 
-        clickOnFlyTextField(searchTextField);
+        clickOnFlyTextField(searchDropDown);
 
     }
     public void clickOnFlyTextField(WebElement searchDropDown) {
