@@ -3,6 +3,7 @@ package HW_02_Flights.pages;
 import HW_02_Flights.base.BasePageDriverInitialization;
 import HW_02_Flights.utils.Utils;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.interactions.Actions;
@@ -56,11 +57,15 @@ public class FlightsPage extends BasePageDriverInitialization {
         WebElement searchTextField = driver.findElement(searchFlyFromTextField);
         searchTextField.sendKeys("LAX");
 
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
-        WebElement searchDropDown = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//ul[@class='dropdown-menu large']")));
+      //  waitForElementVisible(WebDriver driver, By locator, int timeoutInSeconds)
+        WebElement searchDropDown = driver.findElement(By.xpath("//ul[@class='dropdown-menu large']"));
+        Utils.waitForElementVisible(driver, (By) searchDropDown, 3);
+      //  WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
+      //  WebElement searchDropDown = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//ul[@class='dropdown-menu large']")));
         System.out.println("textttt otp? = " + searchDropDown.getText());
 
-        searchDropDown = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//li/a/b[contains(text(), 'LAX')]")));
+        searchDropDown = driver.findElement(By.xpath("//li/a/b[contains(text(), 'LAX')]"));
+        Utils.waitForElementClickable(driver, searchDropDown,3);
         System.out.printf("textttt otp? = %s%n", searchDropDown.getTagName());
         System.out.printf("textttt otp? = " + searchDropDown.getAccessibleName());
         searchDropDown.click();

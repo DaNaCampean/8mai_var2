@@ -30,7 +30,7 @@ public class FindAflightTest extends BaseTest {
     @Test
     public  void flightsTest(){
 
-        // Verify that correct URL, hotwire.com opens.
+        // Verify that correct URL, hot wire.com opens.
         String myURL = home.getUrl();
         System.out.println("URL = " + myURL);
         Assert.assertEquals(myURL, "https://www.hotwire.com/", "Verific ca s-a accesat pagina corecta");

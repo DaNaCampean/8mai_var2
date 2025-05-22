@@ -8,27 +8,27 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
+
 
 import static HW_02_Flights.base.BasePageDriverInitialization.driver;
 
 public class Utils {
-//in utils, ar merge: waituri...mai bine de folosit esre wait for element to be displayed decat implicit waut cu secunde
+//in utils, we can use wait for elements to be visible , rather than  implicit wait with seconds
     // take screenshots
 
     public static void implicitlyWaitThreeSeconds(){
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
     }
-    // Așteaptă până când elementul devine vizibil
-    public static WebElement waitForElementVisible(WebDriver driver, By locator, int timeoutInSeconds) {
+    // wait until the element became visible
+    public static void waitForElementVisible(WebDriver driver, By locator, int timeoutInSeconds) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeoutInSeconds));
-        return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
     }
 
-    // Așteaptă până când elementul este clicabil
-    public static WebElement waitForElementClickable(WebDriver driver, By locator, int timeoutInSeconds) {
+    // Wait until the element is clickable
+    public static void waitForElementClickable(WebDriver driver, WebElement locator, int timeoutInSeconds) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeoutInSeconds));
-        return wait.until(ExpectedConditions.elementToBeClickable(locator));
+        wait.until(ExpectedConditions.elementToBeClickable(locator));
     }
 
 
