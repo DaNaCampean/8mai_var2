@@ -46,5 +46,7 @@ A VINE DE LA hyperlink...vezi fiecare litera ce inseamna
 
 fie 2. sa adaugam o conditie specifica care sa ne spuna cand testul nostru pica dintr-o anumita eroare (502 in cazul tau), lucru care in practica e raportat la devi ca si o posibila problema de sistem
 
+
+xpath share screen alexandra: //a[@class='active' and contains(.,'LAX')]
      */
 }

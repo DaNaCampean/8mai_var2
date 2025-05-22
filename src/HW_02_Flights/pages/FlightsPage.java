@@ -40,20 +40,15 @@ public class FlightsPage extends BasePageDriverInitialization {
     public void FillFlyFromTextField() {
 
 
-            WebElement searchTextField = driver.findElement(searchFlyFromTextField);
-            searchTextField.sendKeys("LAX");
-            Utils.implicitlyWaitThreeSeconds();
-            WebElement searchDropDown = driver.findElement(By.xpath("//ul[@class='dropdown-menu large']"));
-            searchTextField.click();
-
-
-          //  WebElement searchDropDown = driver.findElement(By.xpath("//ul[@class='dropdown-menu large']"));
-          //  System.out.println("textttt first field? = "+ searchDropDown.getText());
-         //  searchDropDown = driver.findElement(By.xpath("//li[a[contains(text(), 'LAX')]]"));
-         //   System.out.println("textttt first field? = "+ searchDropDown.getText());
-         //   System.out.printf("textttt otp? = %s%n", searchDropDown.getTagName());
-         //   searchDropDown.click();
-
+        WebElement searchTextField = driver.findElement(searchFlyFromTextField);
+        searchTextField.sendKeys("LAX");
+        Utils.implicitlyWaitThreeSeconds();
+        WebElement searchDropDown = driver.findElement(By.xpath("//ul[@class='dropdown-menu large']"));
+        System.out.println("textttt otp? = "+ searchDropDown.getText());
+        searchDropDown = driver.findElement(By.xpath("//li/a/b[contains(text(), 'LAX')]"));
+        System.out.printf("textttt otp? = %s%n", searchDropDown.getTagName());
+        System.out.printf("textttt otp? ="+searchDropDown.getAccessibleName());
+        searchDropDown.click();
         }
 
 
@@ -62,11 +57,11 @@ public class FlightsPage extends BasePageDriverInitialization {
 
 public void FillFlyToTextField() {
         WebElement searchTextField = driver.findElement(searchFlyToTextField);
-        searchTextField.sendKeys("LAX");
+        searchTextField.sendKeys("Bucharest");
         Utils.implicitlyWaitThreeSeconds();
         WebElement searchDropDown = driver.findElement(By.xpath("//ul[@class='dropdown-menu large']"));
         System.out.println("textttt otp? = "+ searchDropDown.getText());
-        searchDropDown = driver.findElement(By.xpath("//li/a/b[contains(text(), 'LAX')]"));
+        searchDropDown = driver.findElement(By.xpath("//li[a[contains(text(), 'OTP')]]"));
         System.out.printf("textttt otp? = %s%n", searchDropDown.getTagName());
         System.out.printf("textttt otp? ="+searchDropDown.getAccessibleName());
         searchDropDown.click();
