@@ -3,36 +3,9 @@
 
 
 
-        searchFieldFrom.sendKeys("LAX");
-
-       text field drop down?
-        WebElement searchDropDown = driver.findElement(By.xpath("//ul[@class='dropdown-menu large']"));
 
 
 
-     //   System.out.println(searchDropDown.getText());
-     //   System.out.println("de selectat = " + mySelect.getFirstSelectedOption().getText());
-        searchFieldFrom.click();
-
-
-        String text = searchFieldFrom.getText();
-        System.out.println("Textul de la FROM ESTE: " + searchDropDown.getText());
-
-
-        WebElement searchFieldTo = driver.findElement(By.xpath("//div[@class='col-xs-12 margin-top-4']/div[@class='location-typeahead']/div[@class='hw-form-group form-group floating-label empty has-icon']/input[@class='form-control hw-input hw-input-icon type__400__regular text-ellipsis']"));
-        searchFieldTo.sendKeys("Bucharest");
-        searchDropDown = driver.findElement(By.xpath("//ul[@class='dropdown-menu large']"));
-
-        System.out.println("textttt otp? = "+ searchDropDown.getText());
-        searchDropDown = driver.findElement(By.xpath("//li[a[contains(text(), 'BUH')]]"));
-        System.out.println("SELECTED ONE? = "+ searchDropDown.getText());
-        // searchField.click();
-        searchDropDown.click();
-
-
-
-
-        // //ul[@class='dropdown-menu large typeahead-scroll']/li[a[contains(text(), 'BUH')]]
 
         // click date
         driver.findElement(By.xpath("   //div[@data-bdd='farefinder-flight-startdate-input']")).click();

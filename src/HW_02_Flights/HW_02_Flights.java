@@ -199,8 +199,8 @@ public class HW_02_Flights {
         currentDate = LocalDate.now();
         System.out.println("local = " + currentDate);
         // Add 28 days
-        LocalDate startDate = currentDate.plusDays(35);
-        LocalDate endDate = currentDate.plusDays(40);
+        LocalDate startDate = currentDate.plusDays(7);
+        LocalDate endDate = currentDate.plusDays(8);
 
         // Format the date if needed
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMMM d, yyyy");
@@ -240,7 +240,7 @@ public class HW_02_Flights {
 
 
        WebElement passengers = driver.findElement(By.xpath("//input[@name='farefinder-occupant-selector-flight']"));
-     Thread.sleep(1000);
+       Thread.sleep(1000);
      // passengers.click();
         actions.click(passengers).perform();   // dropdown passengers
 
@@ -248,7 +248,7 @@ public class HW_02_Flights {
         searchDropDown = driver.findElement(By.xpath("//span[@class='guest-picker__popover Tooltip Tooltip--bottom Tooltip--popover Tooltip--lg in fade']"));
 
         System.out.println(" popup= "+ searchDropDown.getText());
-        searchField.click();
+       // searchField.click();
 
 
         driver.findElement(By.xpath("//*[name()='svg' and @data-id='SVG_PLUS__16']")).click(); // 2xadulti

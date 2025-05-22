@@ -16,19 +16,15 @@ public class Utils {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
     }
 
-    public static void returnCurrentDate(){
+    public static LocalDate returnCurrentDate(){
         // Set the current date
-        LocalDate currentDate = LocalDate.of(2025, 5, 5); // May 5, 2025
-        System.out.println("set the current date = " + currentDate);
-        currentDate = LocalDate.now();
-        System.out.println("local = " + currentDate);
+
+        LocalDate currentDate = LocalDate.now();
+        System.out.println("Current DATE = " + currentDate);
 
 
-        // Format the date if needed
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMMM d, yyyy");
-        String startDateString = currentDate.format(formatter);
 
-        System.out.println("STARTTT Date = " + startDateString);
+        return currentDate;
 
     }
 

@@ -38,17 +38,19 @@ public class FindAflightTest extends BaseTest {
 
         // Verify that "Flights Tab was selected
         home.selectFlights();
+
+
         String flightsTabText = flights.getText();
         Assert.assertEquals(flightsTabText, "Find a flight", "Verific ca s-a apasat Tabul de Flights");
         System.out.println("Passed - correct Flights page opens");
 
         //Fly from: LAX
 
-        flights.FillFlyTextField("LAX",1);
+        flights.FillFlyFromTextField();
 
 
         // Fly To: Bucharest Otopeni
-        flights.FillFlyTextField("Bucharest",2);
+        flights.FillFlyToTextField();
 
         // From date - 7 days from today
 
@@ -61,6 +63,7 @@ public class FindAflightTest extends BaseTest {
 
         home.waitForPageToBeLoaded();
         flights.getCurrentDate();
+        flights.ToBeRefactor();
 
 
 
