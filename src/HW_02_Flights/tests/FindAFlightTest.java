@@ -13,19 +13,12 @@ package HW_02_Flights.tests;
  */
 
 
-import HW_02_Flights.base.BasePageDriverInitialization;
-import HW_02_Flights.pages.HomePage;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
+
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import java.time.Duration;
 
-import static org.testng.Assert.assertEquals;
-
-public class FindAflightTest extends BaseTest {
+public class FindAFlightTest extends BaseTest {
 
     @Test
     public  void flightsTest(){
@@ -33,7 +26,7 @@ public class FindAflightTest extends BaseTest {
         // Verify that correct URL, hot wire.com opens.
         String myURL = home.getUrl();
         System.out.println("URL = " + myURL);
-        Assert.assertEquals(myURL, "https://www.hotwire.com/", "Verific ca s-a accesat pagina corecta");
+        Assert.assertEquals(myURL, "https://www.hotwire.com/", "Verified that the correct page was shown");
         System.out.println("Passed - correct URL: " + myURL + "opens");
 
         // Verify that "Flights Tab was selected
@@ -41,7 +34,7 @@ public class FindAflightTest extends BaseTest {
 
 
         String flightsTabText = flights.getText();
-        Assert.assertEquals(flightsTabText, "Find a flight", "Verific ca s-a apasat Tabul de Flights");
+        Assert.assertEquals(flightsTabText, "Find a flight", "Verified that Flights tab was pressed ");
         System.out.println("Passed - correct Flights page opens");
 
         //Fly from: LAX
@@ -49,7 +42,7 @@ public class FindAflightTest extends BaseTest {
         flights.FillFlyFromTextField();
 
 
-        // Fly To: Bucharest Otopeni
+        // Fly To: Bucharest OTP
         flights.FillFlyToTextField();
 
         // From date - 7 days from today

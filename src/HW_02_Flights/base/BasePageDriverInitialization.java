@@ -5,7 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
-import java.time.Duration;
+
 
 public class BasePageDriverInitialization {
 
@@ -14,7 +14,7 @@ public class BasePageDriverInitialization {
 
     public BasePageDriverInitialization() {
 
-        if (driver == null) {  // daca nu pun acest null, the browser opens de 2 ori: odata for home page si o data for FLIGHTS PAGE din baseTest create objects
+        if (driver == null) {  // daca nu pun this null, the browser opens de 2 ori: odata for home page si o data for FLIGHTS PAGE din baseTest create objects
 
             System.out.println("INITIALIZATION ");
             ChromeOptions options = new ChromeOptions();
@@ -41,16 +41,10 @@ public class BasePageDriverInitialization {
 
 
 
-//        System.out.println("INITIALIZATION ");
-//        ChromeOptions options = new ChromeOptions();
-//        options.addArguments("--disable-search-engine-choice-screen");
-//        driver = new ChromeDriver(options);
-//        driver.manage().window().maximize();
-//        driver.get("https://hotwire.com");
 
     }
     public static void driverQuit(){
-        driver.quit();;
+        driver.quit();
     }
 
 }

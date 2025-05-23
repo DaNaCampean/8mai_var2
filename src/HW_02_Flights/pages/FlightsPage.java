@@ -3,17 +3,12 @@ package HW_02_Flights.pages;
 import HW_02_Flights.base.BasePageDriverInitialization;
 import HW_02_Flights.utils.Utils;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
 import java.time.Duration;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-
 import static org.testng.AssertJUnit.assertEquals;
 
 public class FlightsPage extends BasePageDriverInitialization {
@@ -48,10 +43,10 @@ public class FlightsPage extends BasePageDriverInitialization {
 
         Utils.implicitlyWaitThreeSeconds();
         WebElement searchDropDown = driver.findElement(By.xpath("//ul[@class='dropdown-menu large']"));
-        System.out.println("textttt otp? = "+ searchDropDown.getText());
+        System.out.println("text otp? = "+ searchDropDown.getText());
         searchDropDown = driver.findElement(By.xpath("//li/a/b[contains(text(), 'LAX')]"));
-        System.out.printf("textttt otp? = %s%n", searchDropDown.getTagName());
-        System.out.printf("textttt otp? ="+searchDropDown.getAccessibleName());
+        System.out.printf("text otp? = %s%n", searchDropDown.getTagName());
+        System.out.printf("text otp? ="+searchDropDown.getAccessibleName());
         searchDropDown.click();*/
 
         WebElement searchTextField = driver.findElement(searchFlyFromTextField);
@@ -66,8 +61,8 @@ public class FlightsPage extends BasePageDriverInitialization {
 
         searchDropDown = driver.findElement(By.xpath("//li/a/b[contains(text(), 'LAX')]"));
         Utils.waitForElementClickable(driver, searchDropDown,3);
-        System.out.printf("textttt otp? = %s%n", searchDropDown.getTagName());
-        System.out.printf("textttt otp? = " + searchDropDown.getAccessibleName());
+        System.out.printf("text otp? = %s%n", searchDropDown.getTagName());
+        System.out.printf("text otp? = " + searchDropDown.getAccessibleName());
         searchDropDown.click();
         }
 
@@ -80,10 +75,10 @@ public void FillFlyToTextField() {
         searchTextField.sendKeys("Bucharest");
         Utils.implicitlyWaitThreeSeconds();
         WebElement searchDropDown = driver.findElement(By.xpath("//ul[@class='dropdown-menu large']"));
-        System.out.println("textttt otp? = "+ searchDropDown.getText());
+        System.out.println("text otp? = "+ searchDropDown.getText());
         searchDropDown = driver.findElement(By.xpath("//li[a[contains(text(), 'OTP')]]"));
-        System.out.printf("textttt otp? = %s%n", searchDropDown.getTagName());
-        System.out.printf("textttt otp? ="+searchDropDown.getAccessibleName());
+        System.out.printf("text otp? = %s%n", searchDropDown.getTagName());
+        System.out.printf("text otp? ="+searchDropDown.getAccessibleName());
         searchDropDown.click();
     }
 
@@ -110,8 +105,8 @@ public void FillFlyToTextField() {
         String endDateString = endDate.format(formatter);
 
 
-        System.out.println("STARTTT Date = " + startDate);
-        System.out.println("ENDDDD DATE = " + endDate);
+        System.out.println("START Date = " + startDate);
+        System.out.println("END DATE = " + endDate);
 
 
 
@@ -159,7 +154,7 @@ public void FillFlyToTextField() {
         // searchField.click();
 
 
-        driver.findElement(By.xpath("//*[name()='svg' and @data-id='SVG_PLUS__16']")).click(); // 2xadulti
+        driver.findElement(By.xpath("//*[name()='svg' and @data-id='SVG_PLUS__16']")).click(); // 2x Adults
         driver.findElement(By.xpath("//span[@class='btn__label' and text()='Done']")).click(); // DONE button
 
 
@@ -186,25 +181,22 @@ public void FillFlyToTextField() {
         //  Thread.sleep(5000);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
 
-        System.out.println("ASSERTTTTTT:");
-        //"//text()='Recommended departing flights'"));
+        System.out.println("ASSERT:");
 
-        //<span class="">Choose departing flight</span>
-        //  driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
 
-//        WebElement assertfinal = driver.findElement(By.xpath("//span[contains(text(),'Choose departing fligh')]"));
-//        String textAsser = assertfinal.getText();
-//        System.out.println("getTEXTTT = "+ textAsser);
-//       assertEquals(textAsser, "Choose departing fligh", "Verific ca a mers Search Flights - loading page"); // doar daca nu e ok apare acest mesaj
+//        WebElement assertFinal = driver.findElement(By.xpath("//span[contains(text(),'Choose departing flight')]"));
+//        String textAsser = assertFinal.getText();
+//        System.out.println("getTEXT = "+ textAsser);
+//       assertEquals(textAsser, "Choose departing flight", "Verify ca a mers Search Flights - loading page"); // only if is not ok , is shown this message
 
-        FirefoxDriver newbr = new FirefoxDriver();
-        newbr.get(myUrl);
+        FirefoxDriver newBrowser = new FirefoxDriver();
+        newBrowser.get(myUrl);
         System.out.println("URL = " + myUrl);
 
-        WebElement assertfinal = driver.findElement(By.xpath("//span[contains(text(),'Choose departing flight')]"));
-        String textAsser = assertfinal.getText();
-        System.out.println("getTEXTTT = "+ textAsser);
-        assertEquals(textAsser, "Choose departing fligh", "Verific ca a mers Search Flights - loading page"); // doar daca nu e ok apare acest mesaj
+        WebElement assertFinal = driver.findElement(By.xpath("//span[contains(text(),'Choose departing flight')]"));
+        String textAsser = assertFinal.getText();
+        System.out.println("getTEXT = "+ textAsser);
+        assertEquals(textAsser, "Choose departing flight", "Verify ca a mers Search Flights - loading page"); //only if is not ok , is shown this message
 
 
 //        assert first - Los Angeles to Bucharest
@@ -213,18 +205,18 @@ public void FillFlyToTextField() {
 //       WebElement finalAssert = driver.findElement(By.xpath("//h2[@class='uitk-heading uitk-heading-5']"));
 //
 //      String textAsser = finalAssert.getText();
-//       System.out.println("getTEXTTT = "+ textAsser);
-//       assertEquals(textAsser, "Los Angeles to Bucharest", "Verific ca a mers Search Flights - loading page"); // doar daca nu e ok apare acest mesaj
+//       System.out.println("getTEXT = "+ textAsser);
+//       assertEquals(textAsser, "Los Angeles to Bucharest", "Verify ca a mers Search Flights - loading page"); // only if is not ok , is shown this message
 //
 //<span class="">Choose departing flight</span>
-//        //Asser second - Recommended
+//       Asser second - Recommended
 //
 //        System.out.println("Final  = ");
 //        WebElement finalAssert1 = driver.findElement(By.xpath("//h5[@class='uitk-heading uitk-heading-5']"));
 //
 //        String textAsser1 = finalAssert1.getText();
-//        System.out.println("getTEXTTT = "+ textAsser1);
-//        assertEquals(textAsser1, "Recommended departing flights", "Verific ca a mers Search Flights"); // doar daca nu e ok apare acest mesaj
+//        System.out.println("getTEXT = "+ textAsser1);
+//        assertEquals(textAsser1, "Recommended departing flights", "Verify ca a mers Search Flights"); // only if is not ok , is shown this message
     }
 }
 

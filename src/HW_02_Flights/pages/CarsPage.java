@@ -5,7 +5,7 @@ public class CarsPage {
     // Selectors section
 
 
-    // Methodes section
+    // Methods section
 
 
 }
