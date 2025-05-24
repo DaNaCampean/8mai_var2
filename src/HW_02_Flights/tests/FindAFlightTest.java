@@ -29,7 +29,7 @@ public class FindAFlightTest extends BaseTest {
         Assert.assertEquals(myURL, "https://www.hotwire.com/", "Verified that the correct page was shown");
         System.out.println("Passed - correct URL: " + myURL + "opens");
 
-        // Verify that "Flights Tab was selected
+        // Verify that Flights Tab was selected
         home.selectFlights();
 
 

@@ -6,6 +6,9 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
 import java.time.Duration;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -51,18 +54,17 @@ public class FlightsPage extends BasePageDriverInitialization {
 
         WebElement searchTextField = driver.findElement(searchFlyFromTextField);
         searchTextField.sendKeys("LAX");
-
+      //  Utils.waitForElementVisible(driver, By.xpath("//ul[@class='dropdown-menu large']"), 3);
       //  waitForElementVisible(WebDriver driver, By locator, int timeoutInSeconds)
-        WebElement searchDropDown = driver.findElement(By.xpath("//ul[@class='dropdown-menu large']"));
-        Utils.waitForElementVisible(driver, (By) searchDropDown, 3);
-      //  WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
-      //  WebElement searchDropDown = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//ul[@class='dropdown-menu large']")));
-        System.out.println("textttt otp? = " + searchDropDown.getText());
+      //  WebElement searchDropDown = driver.findElement(By.xpath("//ul[@class='dropdown-menu large']"));
+        //Utils.waitForElementVisible(driver, (By) searchDropDown, 3);
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
+      WebElement searchDropDown = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//ul[@class='dropdown-menu large']")));
+
+        System.out.println("text otp? = " + searchDropDown.getText());
 
         searchDropDown = driver.findElement(By.xpath("//li/a/b[contains(text(), 'LAX')]"));
         Utils.waitForElementClickable(driver, searchDropDown,3);
-        System.out.printf("text otp? = %s%n", searchDropDown.getTagName());
-        System.out.printf("text otp? = " + searchDropDown.getAccessibleName());
         searchDropDown.click();
         }
 
