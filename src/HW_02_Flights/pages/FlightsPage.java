@@ -11,6 +11,9 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.Arrays;
+import java.util.List;
+
 import static org.testng.AssertJUnit.assertEquals;
 
 public class FlightsPage extends BasePageDriverInitialization {
@@ -21,8 +24,11 @@ public class FlightsPage extends BasePageDriverInitialization {
     By searchFlyFromTextField = By.xpath("//div[@class='col-xs-12 margin-top-6']/div[@class='location-typeahead']/div[contains(@class, 'hw-form-group form-group floating-label')]/input[@class='form-control hw-input hw-input-icon type__400__regular text-ellipsis']"); // Fly from textField
     By searchFlyToTextField = By.xpath("//div[@class='col-xs-12 margin-top-4']/div[@class='location-typeahead']/div[contains(@class, 'hw-form-group form-group floating-label')]/input[@class='form-control hw-input hw-input-icon type__400__regular text-ellipsis']");
     By dateFormXPath = By.xpath("   //div[@data-bdd='farefinder-flight-startdate-input']");
-    By fromDateXPath = By.xpath("//*[name()='svg' and @data-id = 'SVG_CHEVRON_RIGHT__16']");
-    By toDateXPath = By.xpath("//*[name()='svg' and @data-id = 'SVG_CHEVRON_LEFT__16']");
+
+
+
+ //   By fromDateXPath = By.xpath("//*[name()='svg' and @data-id = 'SVG_CHEVRON_RIGHT__16']");
+ //   By toDateXPath = By.xpath("//*[name()='svg' and @data-id = 'SVG_CHEVRON_LEFT__16']");
 //    By departingDateClickXPath = By.xpath("//td[@aria-label='" + departingDateString + "']");
 //    By returningDateClickXPath = By.xpath("//td[@aria-label='" + returningDateString + "']");
 
@@ -81,24 +87,11 @@ public String FillFlyToTextField() {
         return searchTextField.getDomAttribute("value");
     }
 
-    public void datesChoosing(){
+    public List<String> datesChoosing(){
         // create Date WebElements
         WebElement dateForm = driver.findElement(dateFormXPath);
         //click on date form
         dateForm.click();
-
-        // WebElement fromDate = driver.findElement(fromDateXPath);
-        //click on Departing date
-        //   fromDate.click();
-
-        //   WebElement toDate = driver.findElement(toDateXPath);
-        //click on Returning date
-        //  toDate.click();
-
-
-
-
-
 
         LocalDate currentDate = Utils.returnCurrentDate(); //retrieve the current date
 
@@ -115,6 +108,18 @@ public String FillFlyToTextField() {
         driver.findElement(By.xpath("//td[@aria-label='" + departingDateString + "']")).click();
 
         driver.findElement(By.xpath("//td[@aria-label='" + returningDateString + "']")).click();
+        String dana = driver.findElement(By.xpath("//input[@name='startDate']")).getDomAttribute("value");
+
+        System.out.println("START = " + dana );
+        String endd = driver.findElement(By.xpath("//input[@name='endDate']")).getDomAttribute("value");
+        System.out.println("END = " +  endd);
+        List<String> startAndEndDates = Arrays.asList(dana,endd);
+
+        System.out.println("LIST = " + startAndEndDates);
+
+        return startAndEndDates;
+
+
     }
 
     public void passengersSelection(){
@@ -151,30 +156,7 @@ public String FillFlyToTextField() {
         searchFlight.click();
     }
 
-    public void ToBeRefactor(){
 
-       datesChoosing();
-
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
-
-
-        passengersSelection();
-
-
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
-
-
-        findAFlight();
-
-
-
-        //  Thread.sleep(5000);
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
-
-
-
-
-    }
 }
 
 

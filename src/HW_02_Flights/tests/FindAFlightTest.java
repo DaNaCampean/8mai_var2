@@ -14,8 +14,15 @@ package HW_02_Flights.tests;
 
 
 
+import HW_02_Flights.utils.Utils;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+
+import java.time.Duration;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Arrays;
+import java.util.List;
 
 
 public class FindAFlightTest extends BaseTest {
@@ -47,18 +54,48 @@ public class FindAFlightTest extends BaseTest {
         System.out.println("Passed - OTP is correctly selected");
 
         // From date - 7 days from today
-
         // To date - 14 days from today
 
+
+        LocalDate departingDate = Utils.returnCurrentDate().plusDays(7);
+        LocalDate returningDate = Utils.returnCurrentDate().plusDays(14);
+
+        //String dana = flights.datesChoosing();
+
+        List<String> expectedList = flights.datesChoosing();
+
+
+        System.out.println("expectedddddddddddd = " + expectedList);
+
+        //DANA = 06/03/2025
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
+        String departingDateString = departingDate.format(formatter);
+        String returningDateString = returningDate.format(formatter);
+
+        List<String> actualList = Arrays.asList(departingDateString,returningDateString);
+
+        System.out.println("actuallllllllll = " + actualList);
+
+
+
+        Assert.assertEquals(expectedList,actualList , "Verified that startDate and endDate are correctly SET");
+        System.out.println("Passed - Departing Date and Returning Dates are correctly selected");
+
+        Utils.implicitlyWaitThreeSeconds();
+
         // 2 adults
+        flights.passengersSelection();
+        Utils.implicitlyWaitThreeSeconds();
 
         // search flights
 
-
+        flights.findAFlight();
+        Utils.implicitlyWaitThreeSeconds();
         //home.waitForPageToBeLoaded();
-        flights.getCurrentDate();
-        flights.ToBeRefactor();
-//test
+       // flights.getCurrentDate();
+       // flights.ToBeRefactor();
+
+
 
 //        WebElement assertFinal = driver.findElement(By.xpath("//span[contains(text(),'Choose departing flight')]"));
 //        String textAsser = assertFinal.getText();
