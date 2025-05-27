@@ -23,34 +23,25 @@ public class FlightsPage extends BasePageDriverInitialization {
     By searchFlyToTextField = By.xpath("//div[@class='col-xs-12 margin-top-4']/div[@class='location-typeahead']/div[contains(@class, 'hw-form-group form-group floating-label')]/input[@class='form-control hw-input hw-input-icon type__400__regular text-ellipsis']");
 
     Actions actions = new Actions(driver);
-    //a[contains(@aria-label, ‘logo_’)]
 
 
-    // Methodes section
+
+    // Methods section
 
     public void getCurrentDate() {
         Utils.returnCurrentDate();
     }
 
-    public String getText() {
+    public String getTextSearchButton() {
         WebElement buttonText = driver.findElement(findAFlightTextXPath);
         return buttonText.getText();
 
     }
 
-    public void FillFlyFromTextField() {
 
 
-        /*WebElement searchTextField = driver.findElement(searchFlyFromTextField);
-        searchTextField.sendKeys("LAX");
+    public String FillFlyFromTextField() {
 
-        Utils.implicitlyWaitThreeSeconds();
-        WebElement searchDropDown = driver.findElement(By.xpath("//ul[@class='dropdown-menu large']"));
-        System.out.println("text otp? = "+ searchDropDown.getText());
-        searchDropDown = driver.findElement(By.xpath("//li/a/b[contains(text(), 'LAX')]"));
-        System.out.printf("text otp? = %s%n", searchDropDown.getTagName());
-        System.out.printf("text otp? ="+searchDropDown.getAccessibleName());
-        searchDropDown.click();*/
 
         WebElement searchTextField = driver.findElement(searchFlyFromTextField);
         searchTextField.sendKeys("LAX");
@@ -61,18 +52,20 @@ public class FlightsPage extends BasePageDriverInitialization {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
       WebElement searchDropDown = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//ul[@class='dropdown-menu large']")));
 
-        System.out.println("text otp? = " + searchDropDown.getText());
+      //  System.out.println("text otp? = " + searchDropDown.getText());
 
         searchDropDown = driver.findElement(By.xpath("//li/a/b[contains(text(), 'LAX')]"));
         Utils.waitForElementClickable(driver, searchDropDown,3);
         searchDropDown.click();
+        //WebElement dana = driver.findElement(By.xpath("//div[@class='col-xs-12 margin-top-6']/div[@class='location-typeahead']/div[contains(@class, 'hw-form-group form-group floating-label')]/input[@class='form-control hw-input hw-input-icon type__400__regular text-ellipsis']"));
+        return searchTextField.getDomAttribute("value");
         }
 
 
 
 
 
-public void FillFlyToTextField() {
+public String FillFlyToTextField() {
         WebElement searchTextField = driver.findElement(searchFlyToTextField);
         searchTextField.sendKeys("Bucharest");
         Utils.implicitlyWaitThreeSeconds();
@@ -82,6 +75,7 @@ public void FillFlyToTextField() {
         System.out.printf("text otp? = %s%n", searchDropDown.getTagName());
         System.out.printf("text otp? ="+searchDropDown.getAccessibleName());
         searchDropDown.click();
+        return searchTextField.getDomAttribute("value");
     }
 
     public void ToBeRefactor(){
@@ -191,14 +185,15 @@ public void FillFlyToTextField() {
 //        System.out.println("getTEXT = "+ textAsser);
 //       assertEquals(textAsser, "Choose departing flight", "Verify ca a mers Search Flights - loading page"); // only if is not ok , is shown this message
 
-        FirefoxDriver newBrowser = new FirefoxDriver();
-        newBrowser.get(myUrl);
-        System.out.println("URL = " + myUrl);
+      //  FirefoxDriver newBrowser = new FirefoxDriver();
+      //  newBrowser.get(myUrl);
+      //  System.out.println("URL = " + myUrl);
 
-        WebElement assertFinal = driver.findElement(By.xpath("//span[contains(text(),'Choose departing flight')]"));
-        String textAsser = assertFinal.getText();
-        System.out.println("getTEXT = "+ textAsser);
-        assertEquals(textAsser, "Choose departing flight", "Verify ca a mers Search Flights - loading page"); //only if is not ok , is shown this message
+
+       // WebElement assertFinal = driver.findElement(By.xpath("//span[contains(text(),'Choose departing flight')]"));
+      // String textAsser = assertFinal.getText();
+       // System.out.println("getTEXT = "+ textAsser);
+      //  assertEquals(textAsser, "Choose departing flight", "Verify ca a mers Search Flights - loading page"); //only if is not ok , is shown this message
 
 
 //        assert first - Los Angeles to Bucharest

@@ -26,24 +26,25 @@ public class FindAFlightTest extends BaseTest {
         // Verify that correct URL, hot wire.com opens.
         String myURL = home.getUrl();
         System.out.println("URL = " + myURL);
-        Assert.assertEquals(myURL, "https://www.hotwire.com/", "Verified that the correct page was shown");
+        Assert.assertEquals(myURL, "https://www.hotwire.com/", "Verified that the correct page was shown, by URL");
         System.out.println("Passed - correct URL: " + myURL + "opens");
 
         // Verify that Flights Tab was selected
         home.selectFlights();
-
-
-        String flightsTabText = flights.getText();
-        Assert.assertEquals(flightsTabText, "Find a flight", "Verified that Flights tab was pressed ");
-        System.out.println("Passed - correct Flights page opens");
+        String flightsTabText = flights.getTextSearchButton();
+        Assert.assertEquals(flightsTabText, "Find a flight", "Verified that Flights tab was pressed, by checking Find a flight TEXT from search button  ");
+        System.out.println("Passed - correct Flights Tab page opens");
 
         //Fly from: LAX
 
-        flights.FillFlyFromTextField();
+        //flights.FillFlyFromTextField();
+        Assert.assertEquals(flights.FillFlyFromTextField(), "Los Angeles, CA, United States of America (LAX-Los Angeles Intl.)", "Verified that LAX was correctly selected, by getAttribute(value) ");
+        System.out.println("Passed - LAX is correctly selected");
 
 
         // Fly To: Bucharest OTP
-        flights.FillFlyToTextField();
+        Assert.assertEquals(flights.FillFlyToTextField(), "Bucharest, Romania (OTP-Henri Coanda Intl.)", "Verified that OTP was correctly selected, by getAttribute(value) ");
+        System.out.println("Passed - OTP is correctly selected");
 
         // From date - 7 days from today
 
@@ -54,7 +55,7 @@ public class FindAFlightTest extends BaseTest {
         // search flights
 
 
-        home.waitForPageToBeLoaded();
+        //home.waitForPageToBeLoaded();
         flights.getCurrentDate();
         flights.ToBeRefactor();
 
