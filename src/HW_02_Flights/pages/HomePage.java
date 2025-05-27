@@ -2,7 +2,6 @@ package HW_02_Flights.pages;
 
 
 import HW_02_Flights.base.BasePageDriverInitialization;
-import HW_02_Flights.utils.Utils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -31,9 +30,6 @@ public class HomePage extends BasePageDriverInitialization {
         return driver.getCurrentUrl();
     }
 
-    public void waitForPageToBeLoaded(){
-        Utils.implicitlyWaitThreeSeconds();
-    }
 
     public void selectFlights(){
         WebElement flightsClick = driver.findElement(flightsTabXPath);

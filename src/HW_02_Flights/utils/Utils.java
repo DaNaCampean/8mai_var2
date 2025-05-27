@@ -17,8 +17,9 @@ public class Utils {
     // take screenshots
 
     public static void implicitlyWaitThreeSeconds(){
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
     }
+
     // wait until the element became visible
     public static void waitForElementVisible(WebDriver driver, By locator, int timeoutInSeconds) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeoutInSeconds));
@@ -35,9 +36,8 @@ public class Utils {
     public static LocalDate returnCurrentDate(){
         // Set the current date
 
-        LocalDate currentDate = LocalDate.now();
-        System.out.println("Current DATE = " + currentDate);
-        return currentDate;
+       return LocalDate.now();
+
     }
 
 

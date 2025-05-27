@@ -17,8 +17,6 @@ package HW_02_Flights.tests;
 import HW_02_Flights.utils.Utils;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-
-import java.time.Duration;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
@@ -32,7 +30,7 @@ public class FindAFlightTest extends BaseTest {
 
         // Verify that correct URL, hot wire.com opens.
         String myURL = home.getUrl();
-        System.out.println("URL = " + myURL);
+       // System.out.println("URL = " + myURL);
         Assert.assertEquals(myURL, "https://www.hotwire.com/", "Verified that the correct page was shown, by URL");
         System.out.println("Passed - correct URL: " + myURL + "opens");
 
@@ -62,75 +60,47 @@ public class FindAFlightTest extends BaseTest {
 
         //String dana = flights.datesChoosing();
 
-        List<String> expectedList = flights.datesChoosing();
+        List<String> actualList = flights.datesChoosing();
 
 
-        System.out.println("expectedddddddddddd = " + expectedList);
+
 
         //DANA = 06/03/2025
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
         String departingDateString = departingDate.format(formatter);
         String returningDateString = returningDate.format(formatter);
 
-        List<String> actualList = Arrays.asList(departingDateString,returningDateString);
-
-        System.out.println("actuallllllllll = " + actualList);
+        List<String> expectedList = Arrays.asList(departingDateString,returningDateString);
 
 
 
-        Assert.assertEquals(expectedList,actualList , "Verified that startDate and endDate are correctly SET");
+
+
+        Assert.assertEquals(actualList,expectedList , "Verified that startDate and endDate are correctly SET");
         System.out.println("Passed - Departing Date and Returning Dates are correctly selected");
 
         Utils.implicitlyWaitThreeSeconds();
 
         // 2 adults
-        flights.passengersSelection();
+        //flights.passengersSelection();
+
+
+        Assert.assertEquals(flights.passengersSelection(), "2 Adults, 0 Children", "Verified that two Adults are correctly SET");
+        System.out.println("Passed - 2 Adults are correctly selected");
+
         Utils.implicitlyWaitThreeSeconds();
 
         // search flights
 
         flights.findAFlight();
+      // String finishText = flights.findAFlight();
         Utils.implicitlyWaitThreeSeconds();
-        //home.waitForPageToBeLoaded();
-       // flights.getCurrentDate();
-       // flights.ToBeRefactor();
 
 
 
-//        WebElement assertFinal = driver.findElement(By.xpath("//span[contains(text(),'Choose departing flight')]"));
-//        String textAsser = assertFinal.getText();
-//        System.out.println("getTEXT = "+ textAsser);
-//       assertEquals(textAsser, "Choose departing flight", "Verify ca a mers Search Flights - loading page"); // only if is not ok , is shown this message
-
-        //  FirefoxDriver newBrowser = new FirefoxDriver();
-        //  newBrowser.get(myUrl);
-        //  System.out.println("URL = " + myUrl);
+      // Assert.assertEquals(finishText, "Choose departing flight", "Verify ca a mers Search Flights - loading page"); // only if is not ok , is shown this message
 
 
-        // WebElement assertFinal = driver.findElement(By.xpath("//span[contains(text(),'Choose departing flight')]"));
-        // String textAsser = assertFinal.getText();
-        // System.out.println("getTEXT = "+ textAsser);
-        //  assertEquals(textAsser, "Choose departing flight", "Verify ca a mers Search Flights - loading page"); //only if is not ok , is shown this message
-
-
-//        assert first - Los Angeles to Bucharest
-//
-//        System.out.println("LosAngelesToOTP = ");
-//       WebElement finalAssert = driver.findElement(By.xpath("//h2[@class='uitk-heading uitk-heading-5']"));
-//
-//      String textAsser = finalAssert.getText();
-//       System.out.println("getTEXT = "+ textAsser);
-//       assertEquals(textAsser, "Los Angeles to Bucharest", "Verify ca a mers Search Flights - loading page"); // only if is not ok , is shown this message
-//
-//<span class="">Choose departing flight</span>
-//       Asser second - Recommended
-//
-//        System.out.println("Final  = ");
-//        WebElement finalAssert1 = driver.findElement(By.xpath("//h5[@class='uitk-heading uitk-heading-5']"));
-//
-//        String textAsser1 = finalAssert1.getText();
-//        System.out.println("getTEXT = "+ textAsser1);
-//        assertEquals(textAsser1, "Recommended departing flights", "Verify ca a mers Search Flights"); // only if is not ok , is shown this message
 
     }
 

@@ -16,9 +16,9 @@ public class BaseTest {
 
     @BeforeSuite
     public void initDriver(){
-        System.out.println("Sunt in initDriver");
-      //  BasePageDriverInitialization.setUp();
-        BasePageDriverInitialization.driverSetupWindows();
+      //  System.out.println("Sunt in initDriver");
+        BasePageDriverInitialization.setupMac();
+      //  BasePageDriverInitialization.driverSetupWindows();
 
 
     }
@@ -32,9 +32,9 @@ public class BaseTest {
 
     @AfterSuite
     public void driverQuit(){
-        System.out.println("sunt in tear down from base test");
+      //  System.out.println("sunt in tear down from base test");
 
-       // BasePageDriverInitialization.driverQuit();
+       BasePageDriverInitialization.driverQuit();
 
     }
 }

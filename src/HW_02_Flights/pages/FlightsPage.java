@@ -14,8 +14,6 @@ import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 import java.util.List;
 
-import static org.testng.AssertJUnit.assertEquals;
-
 public class FlightsPage extends BasePageDriverInitialization {
 
     // Selectors section
@@ -26,24 +24,13 @@ public class FlightsPage extends BasePageDriverInitialization {
     By dateFormXPath = By.xpath("   //div[@data-bdd='farefinder-flight-startdate-input']");
 
 
-
- //   By fromDateXPath = By.xpath("//*[name()='svg' and @data-id = 'SVG_CHEVRON_RIGHT__16']");
- //   By toDateXPath = By.xpath("//*[name()='svg' and @data-id = 'SVG_CHEVRON_LEFT__16']");
-//    By departingDateClickXPath = By.xpath("//td[@aria-label='" + departingDateString + "']");
-//    By returningDateClickXPath = By.xpath("//td[@aria-label='" + returningDateString + "']");
-
-
-
-
     Actions actions = new Actions(driver);
 
 
 
     // Methods section
 
-    public void getCurrentDate() {
-        Utils.returnCurrentDate();
-    }
+
 
     public String getTextSearchButton() {
         WebElement buttonText = driver.findElement(findAFlightTextXPath);
@@ -59,14 +46,10 @@ public class FlightsPage extends BasePageDriverInitialization {
         WebElement searchTextField = driver.findElement(searchFlyFromTextField);
         searchTextField.sendKeys("LAX");
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
-        WebElement searchDropDown = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//ul[@class='dropdown-menu large']")));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//ul[@class='dropdown-menu large']")));
+        driver.findElement(By.xpath("//li/a/b[contains(text(), 'LAX')]")).click();
 
-      //  System.out.println("text otp? = " + searchDropDown.getText());
-
-        searchDropDown = driver.findElement(By.xpath("//li/a/b[contains(text(), 'LAX')]"));
-        Utils.waitForElementClickable(driver, searchDropDown,3);
-        searchDropDown.click();
-        //WebElement dana = driver.findElement(By.xpath("//div[@class='col-xs-12 margin-top-6']/div[@class='location-typeahead']/div[contains(@class, 'hw-form-group form-group floating-label')]/input[@class='form-control hw-input hw-input-icon type__400__regular text-ellipsis']"));
+        driver.findElement(By.xpath("//div[@class='col-xs-12 margin-top-6']/div[@class='location-typeahead']/div[contains(@class, 'hw-form-group form-group floating-label')]/input[@class='form-control hw-input hw-input-icon type__400__regular text-ellipsis']"));
         return searchTextField.getDomAttribute("value");
         }
 
@@ -78,13 +61,18 @@ public String FillFlyToTextField() {
         WebElement searchTextField = driver.findElement(searchFlyToTextField);
         searchTextField.sendKeys("Bucharest");
         Utils.implicitlyWaitThreeSeconds();
-        WebElement searchDropDown = driver.findElement(By.xpath("//ul[@class='dropdown-menu large']"));
-        System.out.println("text otp? = "+ searchDropDown.getText());
-        searchDropDown = driver.findElement(By.xpath("//li[a[contains(text(), 'OTP')]]"));
-        System.out.printf("text otp? = %s%n", searchDropDown.getTagName());
-        System.out.printf("text otp? ="+searchDropDown.getAccessibleName());
-        searchDropDown.click();
-        return searchTextField.getDomAttribute("value");
+
+//        WebElement searchDropDown = driver.findElement(By.xpath("//ul[@class='dropdown-menu large']"));
+//        searchDropDown = driver.findElement(By.xpath("//li[a[contains(text(), 'OTP')]]"));
+//
+//        searchDropDown.click();
+          driver.findElement(By.xpath("//ul[@class='dropdown-menu large']"));
+          driver.findElement(By.xpath("//li[a[contains(text(), 'OTP')]]")).click();
+
+
+
+
+    return searchTextField.getDomAttribute("value");
     }
 
     public List<String> datesChoosing(){
@@ -106,23 +94,17 @@ public String FillFlyToTextField() {
         String returningDateString = returningDate.format(formatter);
 
         driver.findElement(By.xpath("//td[@aria-label='" + departingDateString + "']")).click();
-
         driver.findElement(By.xpath("//td[@aria-label='" + returningDateString + "']")).click();
-        String dana = driver.findElement(By.xpath("//input[@name='startDate']")).getDomAttribute("value");
 
-        System.out.println("START = " + dana );
-        String endd = driver.findElement(By.xpath("//input[@name='endDate']")).getDomAttribute("value");
-        System.out.println("END = " +  endd);
-        List<String> startAndEndDates = Arrays.asList(dana,endd);
+        String startDate = driver.findElement(By.xpath("//input[@name='startDate']")).getDomAttribute("value");
 
-        System.out.println("LIST = " + startAndEndDates);
+        String endDate = driver.findElement(By.xpath("//input[@name='endDate']")).getDomAttribute("value");
 
-        return startAndEndDates;
-
+        return Arrays.asList(startDate,endDate);
 
     }
 
-    public void passengersSelection(){
+    public String passengersSelection(){
         WebElement passengers = driver.findElement(By.xpath("//input[@name='farefinder-occupant-selector-flight']"));
         try {
             Thread.sleep(1000);
@@ -135,12 +117,14 @@ public String FillFlyToTextField() {
 
         WebElement searchDropDown = driver.findElement(By.xpath("//span[@class='guest-picker__popover Tooltip Tooltip--bottom Tooltip--popover Tooltip--lg in fade']"));
 
-        System.out.println(" popup= "+ searchDropDown.getText());
-        // searchField.click();
+
 
 
         driver.findElement(By.xpath("//*[name()='svg' and @data-id='SVG_PLUS__16']")).click(); // 2x Adults
         driver.findElement(By.xpath("//span[@class='btn__label' and text()='Done']")).click(); // DONE button
+
+        return driver.findElement(By.xpath("//input[@name='farefinder-occupant-selector-flight']")).getDomAttribute("value");
+
 
     }
 
@@ -152,8 +136,14 @@ public String FillFlyToTextField() {
         // passengers.click();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
 
-        // actions.click(searchFlight).perform();
+
         searchFlight.click();
+     //  WebElement assertFinal = driver.findElement(By.xpath("//span[contains(text(),'Choose departing flight')]"));
+//
+//        Utils.waitForElementVisible(driver, (By) assertFinal,10);
+
+
+       // return assertFinal.getText();
     }
 
 
