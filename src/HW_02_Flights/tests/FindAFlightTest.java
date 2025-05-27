@@ -60,7 +60,40 @@ public class FindAFlightTest extends BaseTest {
         flights.ToBeRefactor();
 //test
 
+//        WebElement assertFinal = driver.findElement(By.xpath("//span[contains(text(),'Choose departing flight')]"));
+//        String textAsser = assertFinal.getText();
+//        System.out.println("getTEXT = "+ textAsser);
+//       assertEquals(textAsser, "Choose departing flight", "Verify ca a mers Search Flights - loading page"); // only if is not ok , is shown this message
 
+        //  FirefoxDriver newBrowser = new FirefoxDriver();
+        //  newBrowser.get(myUrl);
+        //  System.out.println("URL = " + myUrl);
+
+
+        // WebElement assertFinal = driver.findElement(By.xpath("//span[contains(text(),'Choose departing flight')]"));
+        // String textAsser = assertFinal.getText();
+        // System.out.println("getTEXT = "+ textAsser);
+        //  assertEquals(textAsser, "Choose departing flight", "Verify ca a mers Search Flights - loading page"); //only if is not ok , is shown this message
+
+
+//        assert first - Los Angeles to Bucharest
+//
+//        System.out.println("LosAngelesToOTP = ");
+//       WebElement finalAssert = driver.findElement(By.xpath("//h2[@class='uitk-heading uitk-heading-5']"));
+//
+//      String textAsser = finalAssert.getText();
+//       System.out.println("getTEXT = "+ textAsser);
+//       assertEquals(textAsser, "Los Angeles to Bucharest", "Verify ca a mers Search Flights - loading page"); // only if is not ok , is shown this message
+//
+//<span class="">Choose departing flight</span>
+//       Asser second - Recommended
+//
+//        System.out.println("Final  = ");
+//        WebElement finalAssert1 = driver.findElement(By.xpath("//h5[@class='uitk-heading uitk-heading-5']"));
+//
+//        String textAsser1 = finalAssert1.getText();
+//        System.out.println("getTEXT = "+ textAsser1);
+//        assertEquals(textAsser1, "Recommended departing flights", "Verify ca a mers Search Flights"); // only if is not ok , is shown this message
 
     }
 
