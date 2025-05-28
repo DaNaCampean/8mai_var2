@@ -1,4 +1,4 @@
-package HW_02_Flights;
+package HW_02_Flights_no_pom;
 
 /*
 
@@ -16,10 +16,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.Select;
 
 import java.text.SimpleDateFormat;
 import java.time.Duration;

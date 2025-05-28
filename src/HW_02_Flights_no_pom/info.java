@@ -1,4 +1,4 @@
-package HW_02_Flights;
+package HW_02_Flights_no_pom;
 
 public class info {
     /*

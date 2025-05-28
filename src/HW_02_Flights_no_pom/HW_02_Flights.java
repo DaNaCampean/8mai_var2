@@ -1,4 +1,4 @@
-package HW_02_Flights;
+package HW_02_Flights_no_pom;
 
 /*
 
@@ -16,10 +16,6 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.interactions.Interaction;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.Select;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.text.SimpleDateFormat;
 import java.time.Duration;
@@ -27,8 +23,6 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 import java.util.Calendar;
-import java.util.List;
-import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
 import static org.testng.Assert.assertEquals;
