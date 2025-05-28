@@ -7,23 +7,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 
 public class HomePage extends BasePageDriverInitialization {
-
-   // WebDriver driver;
-    // constructor
-
-//  public HomePage(WebDriver driver){
-//       this.driver = driver;
-//    }
-
-    // Selectors section
-
-    // click on Flights tab - double click
-   // WebElement flightsClick = driver.findElement(By.xpath("//div[@data-bdd = 'farefinder-option-flights' and @class = 'farefinder-option inactive']"));
-
-    // var 2:
+    //Locators section
     By flightsTabXPath = By.xpath("//div[@data-bdd = 'farefinder-option-flights' and @class = 'farefinder-option inactive']");
-
-
 
     // Methods section
     public String getUrl(){
@@ -39,8 +24,4 @@ public class HomePage extends BasePageDriverInitialization {
         // Perform double-click
         actions.doubleClick(flightsClick).perform();
     }
-
-
-
-
 }

@@ -1,7 +1,6 @@
 package HW_02_Flights.tests;
 
 /*
-
 1. https://www.hotwire.com/
 2. Flights
 3. From LAX

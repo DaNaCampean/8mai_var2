@@ -1,6 +1,5 @@
 package HW_02_Flights.tests;
 
-
 import HW_02_Flights.pages.FlightsPage;
 import HW_02_Flights.pages.HomePage;
 import HW_02_Flights.base.BasePageDriverInitialization;
@@ -12,17 +11,14 @@ public class BaseTest {
     public HomePage home;
     public FlightsPage flights;
 
-
-
     @BeforeSuite
     public void initDriver(){
-      //  System.out.println("Sunt in initDriver");
-        BasePageDriverInitialization.setupMac();
-      //  BasePageDriverInitialization.driverSetupWindows();
 
+      //  BasePageDriverInitialization.setupMac();
+        BasePageDriverInitialization.driverSetupWindows();
 
     }
-//
+
     @BeforeTest
     public void createObjects(){
        home = new HomePage();
