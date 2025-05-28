@@ -11,8 +11,6 @@ package HW_02_Flights.tests;
 
  */
 
-
-
 import HW_02_Flights.utils.Utils;
 import org.testng.Assert;
 import org.testng.annotations.Test;
