@@ -94,6 +94,8 @@ public String FillFlyToTextField() {
         driver.findElement(By.xpath(String.format(setDepartingDateXPath, departingDateString))).click();
         driver.findElement(By.xpath(String.format(setReturningDateXPath, returningDateString))).click();
 
+        System.out.println("valoarea din xpath = " + String.format(setReturningDateXPath, returningDateString ));
+
         String startDate = driver.findElement(readDepartingDateXPath).getDomAttribute("value");
         String endDate = driver.findElement(readReturningDateXPath).getDomAttribute("value");
 
