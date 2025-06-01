@@ -1,3 +1,5 @@
+package AlarmDaNaAutomation;
+
 public class AlarmProblem {
 }
 
@@ -11,24 +13,7 @@ PM360R_243D17 -ok. merge
 
 Test@123456
 
-CX-T1557 - Dark Mode: Permission for customers associated with dealer 1/1115
-1 Step Login to customer site
 
-Test Data
-Use account under dealer 1411 in TEST (svAuto_darkModeVirtual/Password1!)
-
-Expected Result
-Verify logged into customer site
-
-2Step Navigate to Settings --> Login Information
-
-Expected Result
-Verify page loads
-
-3Step Look at options under “Login Information”
-
-Expected Result
-Verify “Site Appearance” is listed as an option
 
 
 CX-T1556 (1.0)Dark Mode: Toggling Dark Mode ON/OFF (Functional)
