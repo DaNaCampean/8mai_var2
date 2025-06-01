@@ -1,6 +1,7 @@
 package AlarmDaNaAutomation.pages.CustomerSite;
 
 import AlarmDaNaAutomation.base.BasePageDriver;
+import HW_02_Flights.utils.Utils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -21,7 +22,10 @@ public class HomePage extends BasePageDriver {
         WebElement singInButton = driver.findElement(signInButtonXPath);
         actions.click(singInButton).perform();
 
-
+    }
+    public String pageHeaderName(By elementXPath){
+        Utils.waitForElementVisible(driver,elementXPath,15);
+        return driver.findElement(elementXPath).getText();
 
     }
 
