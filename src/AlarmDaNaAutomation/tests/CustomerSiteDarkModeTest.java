@@ -7,12 +7,37 @@ import org.openqa.selenium.By;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.Assert;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 public class CustomerSiteDarkModeTest extends BaseTest{
 
 
-    private static final Logger log = LoggerFactory.getLogger(CustomerSiteDarkModeTest.class);
+
+    @BeforeMethod
+
+    public void preconditions(){
+        BaseURLs.goToCustomerSiteURL();
+        home.clickSignIn();
+        login.signInWithCredentials();
+        settings.selectSettings();
+        settings.selectLoginInfo();
+        loginInformation.selectSiteAppearance();
+        String attribute = siteAppearance.returnAttributeDarkMode("data-checked");
+        if (attribute.equals("true")){
+            siteAppearance.darkModeClick();
+            siteAppearance.saveClick();
+        }
+
+        System.out.println("Preconditions/ requirements: CHECKED");
+        customer.darkStuff();
+        System.out.println("DONE DARK STUFF");
+
+
+
+
+    }
+
 
 //    @Test
 //    public void darkModeSiteAppearance() {
@@ -194,6 +219,7 @@ public class CustomerSiteDarkModeTest extends BaseTest{
 //        Expected Result: Verify dark mode is applied
 
          customer.selectHome();
+        customer.darkStuff();
 
 //        STEP 7: Refresh page
 //        Expected Result: Verify dark mode is still applied

@@ -19,6 +19,7 @@ public class SettingsHomePage extends BasePageDriver {
     //Methods section
 
     public void selectSettings(){
+        Utils.waitForElementVisible(driver,settingsXPath,15);
         driver.findElement(settingsXPath).click();
     }
     public void selectLoginInfo(){

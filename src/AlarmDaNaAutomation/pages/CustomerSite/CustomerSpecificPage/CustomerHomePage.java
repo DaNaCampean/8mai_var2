@@ -13,11 +13,25 @@ public class CustomerHomePage extends BasePageDriver {
     By homeXPath = By.xpath("//p[text() = 'Home']");
     By refreshXPath = By.xpath("//button[@aria-label = 'Reload Application']");
     By backgroundColorXPath = By.xpath("//body[@class='base-background ember-application dark is-touch-screen']");
-
-
+    By backXPath = By.xpath("/html");
 
 
     //Methods section
+
+    public void darkStuff(){
+        // Locate the <html> element
+        WebElement htmlElement = driver.findElement(backXPath);
+
+        // Get the 'style' attribute
+        String styleAttr = htmlElement.getDomAttribute("style");
+
+        // Extract "dark" from the style attribute using string manipulation
+        String colorScheme = "";
+        int startIndex = styleAttr.indexOf("color-scheme:") + "color-scheme:".length();
+        int endIndex = styleAttr.indexOf(';', startIndex);
+        colorScheme = styleAttr.substring(startIndex, endIndex).trim();
+        System.out.println("Color Scheme: " + colorScheme);
+    }
 
     public String customerName(){
         Utils.waitForElementVisible(driver,customerNameXPath,15);
