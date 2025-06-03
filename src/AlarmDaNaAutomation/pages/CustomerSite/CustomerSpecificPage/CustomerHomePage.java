@@ -12,26 +12,27 @@ public class CustomerHomePage extends BasePageDriver {
     By settingsXPath = By.xpath("//p[text() = 'Settings']");
     By homeXPath = By.xpath("//p[text() = 'Home']");
     By refreshXPath = By.xpath("//button[@aria-label = 'Reload Application']");
-    By backgroundColorXPath = By.xpath("//body[@class='base-background ember-application dark is-touch-screen']");
     By backXPath = By.xpath("/html");
 
 
     //Methods section
 
-    public void darkStuff(){
+    public String colorTheme(){
         // Locate the <html> element
         WebElement htmlElement = driver.findElement(backXPath);
+        String colorTheme="";
 
         // Get the 'style' attribute
-        String styleAttr = htmlElement.getDomAttribute("style");
-
-        // Extract "dark" from the style attribute using string manipulation
-        String colorScheme = "";
-        int startIndex = styleAttr.indexOf("color-scheme:") + "color-scheme:".length();
-        int endIndex = styleAttr.indexOf(';', startIndex);
-        colorScheme = styleAttr.substring(startIndex, endIndex).trim();
-        System.out.println("Color Scheme: " + colorScheme);
-    }
+        String styleAttribute = htmlElement.getDomAttribute("style");
+        if (styleAttribute.contains("color-scheme: dark")){
+            System.out.println("Background = DARK");
+            colorTheme = "dark";
+        }
+        else if (styleAttribute.contains("color-scheme: light")){
+            colorTheme = "light";
+        }
+        return colorTheme;
+        }
 
     public String customerName(){
         Utils.waitForElementVisible(driver,customerNameXPath,15);
@@ -57,11 +58,5 @@ public class CustomerHomePage extends BasePageDriver {
         Utils.implicitlyWaitThreeSeconds();
         System.out.println("refreshhhh");
     }
-    public void isDarkMode(){
-        String culoare = driver.findElement(backgroundColorXPath).getText();
-        System.out.println(culoare);
 
-        Utils.implicitlyWaitThreeSeconds();
-        System.out.println("refreshhhh");
-    }
 }

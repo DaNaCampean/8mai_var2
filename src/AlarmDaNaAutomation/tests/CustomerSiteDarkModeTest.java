@@ -26,12 +26,14 @@ public class CustomerSiteDarkModeTest extends BaseTest{
         String attribute = siteAppearance.returnAttributeDarkMode("data-checked");
         if (attribute.equals("true")){
             siteAppearance.darkModeClick();
-            siteAppearance.saveClick();
         }
-
+       attribute = siteAppearance.returnAttributeContrast("data-checked");
+        if (attribute.equals("true")){
+            siteAppearance.contrastClick();
+        }
+        siteAppearance.saveClick();
         System.out.println("Preconditions/ requirements: CHECKED");
-        customer.darkStuff();
-        System.out.println("DONE DARK STUFF");
+
 
 
 
@@ -211,7 +213,7 @@ public class CustomerSiteDarkModeTest extends BaseTest{
 //        Expected Result: Verify UI confirms setting has been saved
 
         siteAppearance.saveClick();
-        String notificationText = siteAppearance.returnDarkModeNotificationSave();
+        String notificationText = siteAppearance.returnNotificationSave();
         Assert.assertEquals(notificationText, "Your preferences have been updated.", "Verified that the DarkMode toogle change is Saved. Verified the Notification text");
         System.out.println("STEP 5 - Passed - The notification for saving the DarkMode toogle is correct: "+ notificationText );
 
@@ -219,15 +221,63 @@ public class CustomerSiteDarkModeTest extends BaseTest{
 //        Expected Result: Verify dark mode is applied
 
          customer.selectHome();
-        customer.darkStuff();
+         String colorTheme = customer.colorTheme();
+         Assert.assertEquals(colorTheme, "dark", "Verified that the DarkMode is applied, by checking color-scheme");
+         System.out.println("STEP 6 - Passed - The dark Mode is applied ");
+
 
 //        STEP 7: Refresh page
 //        Expected Result: Verify dark mode is still applied
 
         customer.refreshApp();
+        Assert.assertEquals(customer.colorTheme(), "dark", "Verified that the DarkMode is still applied after Refresh, by checking color-scheme");
+        System.out.println("STEP 6 - Passed - The dark Mode is still applied after Refresh");
 
 //        STEP 8: Repeat for Dark + High contrast mode
 //        Expected Result: Verify dark + high contrast mode remains applied after saving and refreshing the page
+
+        //   STEP 8.1 Click Toggle for High Contrast to ON
+//        Expected Result: Verify toggle UI change (should change to blue)
+
+        // settings.selectSettings();
+        customer.selectSettings();
+        settings.selectLoginInfo();
+        loginInformation.selectSiteAppearance();
+
+
+        siteAppearance.contrastClick();
+        attribute = siteAppearance.returnAttributeContrast("data-checked");
+        Assert.assertEquals(attribute, "true", "Verified that the toogle button forHigh Contrast is ON/ENABLED, by getDomAttribute ");
+        System.out.println("STEP 8.1 - Passed - The toogle button for High Contrast is ON/ENABLED");
+
+        System.out.println("DON'T KNOW HOW TO SEE IF IT IS BLUE");
+
+//        STEP 8.2: Click Save
+//        Expected Result: Verify UI confirms setting has been saved
+
+        siteAppearance.saveClick();
+        notificationText = siteAppearance.returnNotificationSave();
+        Assert.assertEquals(notificationText, "Your preferences have been updated.", "Verified that the High Contrast toogle change is Saved. Verified the Notification text");
+        System.out.println("STEP 8.2 - Passed - The notification for saving the High Contrast toogle is correct: "+ notificationText );
+
+//        STEP 8.3: Navigate back to home screen
+//        Expected Result: Verify High Contrast is applied
+
+        customer.selectHome();
+        System.out.println("NEED to check High CONTRAST");
+//        String colorTheme = customer.colorTheme();
+//        Assert.assertEquals(colorTheme, "dark", "Verified that the DarkMode is applied, by checking color-scheme");
+//        System.out.println("STEP 8.3 - Passed - The dark Mode is applied ");
+
+
+//        STEP 8.4: Refresh page
+//        Expected Result: Verify High Contrast is still applied
+
+        customer.refreshApp();
+//        Assert.assertEquals(customer.colorTheme(), "dark", "Verified that the DarkMode is still applied after Refresh, by checking color-scheme");
+//        System.out.println("STEP 6 - Passed - The dark Mode is still applied after Refresh");
+        System.out.println("NEED to check High CONTRAST");
+
 
     }
 }

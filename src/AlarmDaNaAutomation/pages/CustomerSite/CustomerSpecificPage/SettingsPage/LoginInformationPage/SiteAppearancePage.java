@@ -13,9 +13,7 @@ public class SiteAppearancePage extends BasePageDriver {
     By pageHeaderSiteAppearanceXPath = By.xpath("//h1[text() = 'Site Appearance']");
     By darkModeToogleXPath = By.xpath("//input[@class='dark-mode']");
     By highContrastToogleXPath = By.xpath("//input[@class='high-contrast' and @type='checkbox']");
-
     By saveButtonXPath = By.xpath("//span[text() = 'Save']");
-
     By notificationSave = By.xpath("//p[@class='notification-text' and text()='Your preferences have been updated.']");
 
 
@@ -29,9 +27,9 @@ public class SiteAppearancePage extends BasePageDriver {
 
 
 
-    public String returnAttributeContrast(){
+    public String returnAttributeContrast(String attribute){
         System.out.println("TEXT = " + driver.findElement(highContrastTextXPath).getText());
-        return driver.findElement(highContrastToogleXPath).getDomAttribute("type");
+        return driver.findElement(highContrastToogleXPath).getDomAttribute(attribute);
     }
     public void darkModeClick(){
          driver.findElement(darkModeToogleXPath).click();
@@ -52,7 +50,7 @@ public class SiteAppearancePage extends BasePageDriver {
 
         driver.findElement(saveButtonXPath).click();
     }
-    public String returnDarkModeNotificationSave(){
+    public String returnNotificationSave(){
         Utils.waitForElementVisible(driver, notificationSave,15);
         System.out.println("TEXT = " + driver.findElement(notificationSave).getText());
         return driver.findElement(notificationSave).getText();
