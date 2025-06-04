@@ -30,7 +30,7 @@ public class BaseTest {
     public void driverQuit(){
       //  System.out.println("sunt in tear down from base test");
 
-       BasePageDriverInitialization.driverQuit();
+      // BasePageDriverInitialization.driverQuit();
 
     }
 }
