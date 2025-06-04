@@ -4,6 +4,7 @@ import HW_02_Flights.base.BasePageDriverInitialization;
 import HW_02_Flights.utils.Utils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -128,10 +129,14 @@ public String FillFlyToTextField() {
         WebElement searchFlight = driver.findElement(searchFlightsXPath);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
         // passengers.click();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
 
+
+       //actions.click(searchFlight).perform();
 
         searchFlight.click();
+
+
      //  WebElement assertFinal = driver.findElement(By.xpath("//span[contains(text(),'Choose departing flight')]"));
 //
 //        Utils.waitForElementVisible(driver, (By) assertFinal,10);

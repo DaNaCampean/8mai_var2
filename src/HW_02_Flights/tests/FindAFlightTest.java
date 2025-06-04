@@ -89,6 +89,7 @@ public class FindAFlightTest extends BaseTest {
 
         // search flights
 
+
         flights.findAFlight();
       // String finishText = flights.findAFlight();
         Utils.implicitlyWaitThreeSeconds();
