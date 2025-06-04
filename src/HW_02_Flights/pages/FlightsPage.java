@@ -3,6 +3,7 @@ package HW_02_Flights.pages;
 import HW_02_Flights.base.BasePageDriverInitialization;
 import HW_02_Flights.utils.Utils;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.interactions.Actions;
@@ -123,26 +124,24 @@ public String FillFlyToTextField() {
 
     }
 
-    public void findAFlight(){
+    public String findAFlight()  {
         //search flights
 
         WebElement searchFlight = driver.findElement(searchFlightsXPath);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
         // passengers.click();
+
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
+        Utils.implicitlyWaitThreeSeconds();
 
-
-       //actions.click(searchFlight).perform();
-
+        driver.manage().deleteAllCookies(); // Deletes all the cookies
         searchFlight.click();
-
-
-     //  WebElement assertFinal = driver.findElement(By.xpath("//span[contains(text(),'Choose departing flight')]"));
 //
-//        Utils.waitForElementVisible(driver, (By) assertFinal,10);
+
+     WebElement assertFinal = driver.findElement(By.xpath("//h3[contains(text(),'Recommended departing flights')]"));
 
 
-       // return assertFinal.getText();
+ return assertFinal.getText();
     }
 
 

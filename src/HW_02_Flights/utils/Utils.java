@@ -14,7 +14,7 @@ public class Utils {
     // take screenshots
 
     public static void implicitlyWaitThreeSeconds(){
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
     }
 
     // wait until the element became visible

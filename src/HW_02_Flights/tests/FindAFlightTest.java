@@ -90,13 +90,13 @@ public class FindAFlightTest extends BaseTest {
         // search flights
 
 
-        flights.findAFlight();
+
       // String finishText = flights.findAFlight();
         Utils.implicitlyWaitThreeSeconds();
 
 
 
-      // Assert.assertEquals(finishText, "Choose departing flight", "Verify ca a mers Search Flights - loading page"); // only if is not ok , is shown this message
+      Assert.assertEquals(flights.findAFlight(), "Recommended departing flights", "Verify ca a mers Search Flights - loading page"); // only if is not ok , is shown this message
 
 
 
