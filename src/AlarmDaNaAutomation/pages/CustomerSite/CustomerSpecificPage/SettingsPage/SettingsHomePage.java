@@ -9,7 +9,7 @@ import org.openqa.selenium.By;
 public class SettingsHomePage extends BasePageDriver {
 
     //Locators section
-    By settingsXPath = By.xpath("//p[text() = 'Settings']");
+
     By loginInfoXPath = By.xpath("//h2[text() = 'Login Information']");
     By pageHeaderSettingXPath = By.xpath("//h1[text() = 'Settings']");
 
@@ -18,10 +18,7 @@ public class SettingsHomePage extends BasePageDriver {
 
     //Methods section
 
-    public void selectSettings(){
-        Utils.waitForElementVisible(driver,settingsXPath,15);
-        driver.findElement(settingsXPath).click();
-    }
+
     public void selectLoginInfo(){
         Utils.waitForElementVisible(driver,loginInfoXPath,15);
         driver.findElement(loginInfoXPath).click();

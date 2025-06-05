@@ -4,40 +4,34 @@ import AlarmDaNaAutomation.base.BasePageDriver;
 import AlarmDaNaAutomation.base.BaseURLs;
 import AlarmDaNaAutomation.utils.Utils;
 import org.openqa.selenium.By;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 public class CustomerSiteDarkModeTest extends BaseTest{
 
-
-
     @BeforeMethod
 
     public void preconditions(){
-        BaseURLs.goToCustomerSiteURL();
-        home.clickSignIn();
-        login.signInWithCredentials();
-        settings.selectSettings();
-        settings.selectLoginInfo();
-        loginInformation.selectSiteAppearance();
-        String attribute = siteAppearance.returnAttributeDarkMode("data-checked");
+        // Test Suite preconditions: DarkMode Toogle and HighContrast Toogle  should be DISABLED/OFF
+        BaseURLs.goToCustomerSiteURL(); //open Customer Site
+        home.clickSignIn(); //click on Sign in
+        login.signInWithCredentials(); // login with user and pass
+        customer.selectSettings(); // Open Settings from left menu
+        settings.selectLoginInfo(); // Open Login Information page
+        loginInformation.selectSiteAppearance(); // Open Site Appearance page
+        //DarkMode toogle check and set
+        String attribute = siteAppearance.returnAttributeDarkMode("data-checked"); //get toogle attribute
         if (attribute.equals("true")){
-            siteAppearance.darkModeClick();
+            siteAppearance.darkModeClick(); // If the toogle is ON, make it OFF
         }
+        //Hight Contrast toogle check and set
        attribute = siteAppearance.returnAttributeContrast("data-checked");
         if (attribute.equals("true")){
             siteAppearance.contrastClick();
         }
-        siteAppearance.saveClick();
+        siteAppearance.saveClick(); //save the changes
         System.out.println("Preconditions/ requirements: CHECKED");
-
-
-
-
-
     }
 
 
@@ -92,7 +86,9 @@ public class CustomerSiteDarkModeTest extends BaseTest{
 //
 //
 //    }
-//
+
+
+
 //    @Test
 //    public void darkModeToogle() {
 //
@@ -163,7 +159,7 @@ public class CustomerSiteDarkModeTest extends BaseTest{
 //    }
 
     @Test
-    public void dealer() {
+    public void togglingDarkModeOnOffFunctional() {
         System.out.println("\n");
         System.out.println("TEST CASE: CX-T1556 (1.0)Dark Mode: Toggling Dark Mode ON/OFF (Functional)");
 
@@ -174,7 +170,7 @@ public class CustomerSiteDarkModeTest extends BaseTest{
         home.clickSignIn();
         login.signInWithCredentials();
         String customerSiteName = (customer.customerName());
-        Assert.assertEquals(customerSiteName, "PM360R_243D17", "Verified that the correct customer page opens, by cuatomer name ");
+        Assert.assertEquals(customerSiteName, "PM360R_243D17", "Verified that the correct customer page opens, by customer name ");
         System.out.println("STEP 1 - Passed - correct Customer account LOGGED IN: " + customerSiteName + " opens");
 
 
@@ -182,10 +178,10 @@ public class CustomerSiteDarkModeTest extends BaseTest{
       //  Expected Result: Verify page loads
 
        // settings.selectSettings();
-        customer.selectSettings();
-        settings.selectLoginInfo();
-        By headerNameBy = loginInformation.pageHeaderName();
-        String headerName = home.pageHeaderName(headerNameBy);
+        customer.selectSettings(); //Open Settings page
+        settings.selectLoginInfo(); //Open Login Information Page
+        By headerNameBy = loginInformation.pageHeaderName(); // get page XPATH for the page name
+        String headerName = home.pageHeaderName(headerNameBy); // get the name of the page
 
         Assert.assertEquals(headerName, "Login Information", "Verified that the correct  page opens, by page header ");
         System.out.println("STEP 2 - Passed - correct page: " + headerName + " opens");
@@ -194,8 +190,8 @@ public class CustomerSiteDarkModeTest extends BaseTest{
 //        Expected Result: Verify page loads
 
         loginInformation.selectSiteAppearance();
-        headerNameBy = siteAppearance.pageHeaderName();
-        headerName = home.pageHeaderName(headerNameBy);
+        headerNameBy = siteAppearance.pageHeaderName(); // get xpath of the page name
+        headerName = home.pageHeaderName(headerNameBy); //get the name of the page
         Assert.assertEquals(headerName, "Site Appearance", "Verified that the correct  page opens, by page header ");
         System.out.println("STEP 3 - Passed - correct page: " + headerName + " opens");
 
@@ -208,11 +204,16 @@ public class CustomerSiteDarkModeTest extends BaseTest{
         System.out.println("STEP 4 - Passed - The toogle button for DARK MODE is ON/ENABLED");
 
         System.out.println("DON'T KNOW HOW TO SEE IF IT IS BLUE");
+       // siteAppearance.darkModeClick();
+        siteAppearance.contrastClick();
+        siteAppearance.backToggle();
+
+
 
 //        STEP 5: Click Save
 //        Expected Result: Verify UI confirms setting has been saved
 
-        siteAppearance.saveClick();
+        siteAppearance.saveClick(); //press save button
         String notificationText = siteAppearance.returnNotificationSave();
         Assert.assertEquals(notificationText, "Your preferences have been updated.", "Verified that the DarkMode toogle change is Saved. Verified the Notification text");
         System.out.println("STEP 5 - Passed - The notification for saving the DarkMode toogle is correct: "+ notificationText );
@@ -231,7 +232,9 @@ public class CustomerSiteDarkModeTest extends BaseTest{
 
         customer.refreshApp();
         Assert.assertEquals(customer.colorTheme(), "dark", "Verified that the DarkMode is still applied after Refresh, by checking color-scheme");
-        System.out.println("STEP 6 - Passed - The dark Mode is still applied after Refresh");
+        System.out.println("STEP 7 - Passed - The dark Mode is still applied after Refresh");
+
+
 
 //        STEP 8: Repeat for Dark + High contrast mode
 //        Expected Result: Verify dark + high contrast mode remains applied after saving and refreshing the page
@@ -239,12 +242,13 @@ public class CustomerSiteDarkModeTest extends BaseTest{
         //   STEP 8.1 Click Toggle for High Contrast to ON
 //        Expected Result: Verify toggle UI change (should change to blue)
 
-        // settings.selectSettings();
+       // open Settings-Login Information - SiteAppearance
         customer.selectSettings();
         settings.selectLoginInfo();
         loginInformation.selectSiteAppearance();
 
 
+        // SET High contrast toggle ON
         siteAppearance.contrastClick();
         attribute = siteAppearance.returnAttributeContrast("data-checked");
         Assert.assertEquals(attribute, "true", "Verified that the toogle button forHigh Contrast is ON/ENABLED, by getDomAttribute ");
@@ -265,6 +269,7 @@ public class CustomerSiteDarkModeTest extends BaseTest{
 
         customer.selectHome();
         System.out.println("NEED to check High CONTRAST");
+
 //        String colorTheme = customer.colorTheme();
 //        Assert.assertEquals(colorTheme, "dark", "Verified that the DarkMode is applied, by checking color-scheme");
 //        System.out.println("STEP 8.3 - Passed - The dark Mode is applied ");
@@ -273,10 +278,10 @@ public class CustomerSiteDarkModeTest extends BaseTest{
 //        STEP 8.4: Refresh page
 //        Expected Result: Verify High Contrast is still applied
 
-        customer.refreshApp();
+          customer.refreshApp();
 //        Assert.assertEquals(customer.colorTheme(), "dark", "Verified that the DarkMode is still applied after Refresh, by checking color-scheme");
 //        System.out.println("STEP 6 - Passed - The dark Mode is still applied after Refresh");
-        System.out.println("NEED to check High CONTRAST");
+          System.out.println("NEED to check High CONTRAST");
 
 
     }

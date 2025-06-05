@@ -11,8 +11,8 @@ public class Utils {
     //in utils, we can use wait for elements to be visible , rather than  implicit wait with seconds
 // take screenshots
 
-    public static void implicitlyWaitThreeSeconds(){
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
+    public static void implicitlyWaitFiveSeconds(){
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
     }
 
     // wait until the element became visible

@@ -1,6 +1,5 @@
 package AlarmDaNaAutomation.base;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -17,15 +16,13 @@ public class BasePageDriver {
             options.addArguments("--disable-search-engine-choice-screen");
             driver = new ChromeDriver(options);
             driver.manage().window().maximize();
-           // driver.get("https://emag.ro");
 
         }
     }
 
     public static void driverSetUpWindows(){
-        System.setProperty("webdriver.chrome.driver", "D:\\Backup Softvision\\AUTOMATION STUFF\\selenium\\chromedriver-win64\\chromedriver.exe");
-        //System.setProperty("webdriver.chrome.driver", "C:\\Users\\campe\\Downloads\\Automation\\chromedriver-win64\\chromedriver.exe");
-        //System.setProperty("webdriver.chrome.driver", "C:\\Users\\dcampean\\Desktop\\java-automation\\chromedriver-win64\\chromedriver.exe");
+        //System.setProperty("webdriver.chrome.driver", "D:\\Backup Softvision\\AUTOMATION STUFF\\selenium\\chromedriver-win64\\chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "C:\\Users\\dcampean\\Desktop\\java-automation\\chromedriver-win64\\chromedriver.exe");
 
     }
 
@@ -34,10 +31,6 @@ public class BasePageDriver {
         return driver.getCurrentUrl();
 
     }
-
-
-
-
 
     public static void browserQuit(){
         if (driver!=null){

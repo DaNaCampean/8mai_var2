@@ -46,16 +46,18 @@ public class CustomerHomePage extends BasePageDriver {
     }
 
     public void selectSettings(){
+        Utils.waitForElementVisible(driver,settingsXPath,15);
         driver.findElement(settingsXPath).click();
     }
 
     public void selectHome(){
+        Utils.waitForElementVisible(driver,homeXPath,15);
         driver.findElement(homeXPath).click();
     }
 
     public void refreshApp(){
         driver.findElement(refreshXPath).click();
-        Utils.implicitlyWaitThreeSeconds();
+        Utils.implicitlyWaitFiveSeconds();
         System.out.println("refreshhhh");
     }
 

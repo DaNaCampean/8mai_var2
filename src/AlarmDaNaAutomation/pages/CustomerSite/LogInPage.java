@@ -29,7 +29,6 @@ public class LogInPage extends BasePageDriver {
     public void signInWithCredentials(){
         driver.findElement(userNameXPath).sendKeys("PM360R_243D17");
         driver.findElement(passwordXPath).sendKeys("Test@123456");
-
         driver.findElement(logInButtonXPath).click();
     }
 
