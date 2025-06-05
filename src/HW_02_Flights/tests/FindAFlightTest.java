@@ -70,6 +70,7 @@ public class FindAFlightTest extends BaseTest {
 
         // search flights
        Assert.assertEquals(flights.findAFlight(), "Recommended departing flights", "Verify ca a mers Search Flights - loading page"); // only if is not ok , is shown this message
+       System.out.println("Passed - Searching Flights results page opens");
     }
 
 

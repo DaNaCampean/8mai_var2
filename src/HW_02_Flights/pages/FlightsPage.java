@@ -37,6 +37,7 @@ public class FlightsPage extends BasePageDriverInitialization {
     By readPassengersXPath = By.xpath("//input[@name='farefinder-occupant-selector-flight']");
     By searchFlightsXPath = By.xpath("//div[@class = 'submit-button']");
 
+    By flightsResults = By.xpath("//h3[contains(text(),'Recommended departing flights')]");
 
     // Methods section
 
@@ -111,7 +112,8 @@ public class FlightsPage extends BasePageDriverInitialization {
         Utils.implicitlyWaitFiveSeconds();
         driver.manage().deleteAllCookies(); // Deletes all the cookies
         searchFlight.click();
-        return driver.findElement(By.xpath("//h3[contains(text(),'Recommended departing flights')]")).getText();
+        Utils.waitForElementVisible(driver, flightsResults,15);
+        return driver.findElement(flightsResults).getText();
 
 
     }
