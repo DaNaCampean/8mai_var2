@@ -27,7 +27,6 @@ public class FindAFlightTest extends BaseTest {
 
         // Verify that correct URL, hot wire.com opens.
         String myURL = home.getUrl();
-       // System.out.println("URL = " + myURL);
         Assert.assertEquals(myURL, "https://www.hotwire.com/", "Verified that the correct page was shown, by URL");
         System.out.println("Passed - correct URL: " + myURL + "opens");
 
@@ -38,11 +37,8 @@ public class FindAFlightTest extends BaseTest {
         System.out.println("Passed - correct Flights Tab page opens");
 
         //Fly from: LAX
-
-        //flights.FillFlyFromTextField();
         Assert.assertEquals(flights.FillFlyFromTextField(), "Los Angeles, CA, United States of America (LAX-Los Angeles Intl.)", "Verified that LAX was correctly selected, by getAttribute(value) ");
         System.out.println("Passed - LAX is correctly selected");
-
 
         // Fly To: Bucharest OTP
         Assert.assertEquals(flights.FillFlyToTextField(), "Bucharest, Romania (OTP-Henri Coanda Intl.)", "Verified that OTP was correctly selected, by getAttribute(value) ");
@@ -50,56 +46,30 @@ public class FindAFlightTest extends BaseTest {
 
         // From date - 7 days from today
         // To date - 14 days from today
-
-
-        LocalDate departingDate = Utils.returnCurrentDate().plusDays(7);
+        LocalDate departingDate = Utils.returnCurrentDate().plusDays(7); // BEFORE FORMAT = 2025-06-12
         LocalDate returningDate = Utils.returnCurrentDate().plusDays(14);
 
-        //String dana = flights.datesChoosing();
-
-        List<String> actualList = flights.datesChoosing();
+       List<String> actualList = flights.datesChoosing(departingDate, returningDate);
 
 
-
-
-        //DANA = 06/03/2025
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
-        String departingDateString = departingDate.format(formatter);
-        String returningDateString = returningDate.format(formatter);
-
+//        // format dates to be able to create the list for comparison
+        String departingDateString = Utils.formatDates(departingDate, "MM/dd/yyyy");
+        String returningDateString = Utils.formatDates(returningDate, "MM/dd/yyyy");
         List<String> expectedList = Arrays.asList(departingDateString,returningDateString);
 
-
-
-
-
-        Assert.assertEquals(actualList,expectedList , "Verified that startDate and endDate are correctly SET");
+        Assert.assertEquals(actualList,expectedList, "Verified that startDate and endDate are correctly SET");
         System.out.println("Passed - Departing Date and Returning Dates are correctly selected");
+        Utils.implicitlyWaitFiveSeconds();
 
-        Utils.implicitlyWaitThreeSeconds();
 
         // 2 adults
         //flights.passengersSelection();
-
-
         Assert.assertEquals(flights.passengersSelection(), "2 Adults, 0 Children", "Verified that two Adults are correctly SET");
         System.out.println("Passed - 2 Adults are correctly selected");
-
-        Utils.implicitlyWaitThreeSeconds();
+        Utils.implicitlyWaitFiveSeconds();
 
         // search flights
-
-
-
-      // String finishText = flights.findAFlight();
-        Utils.implicitlyWaitThreeSeconds();
-
-
-
-      Assert.assertEquals(flights.findAFlight(), "Recommended departing flights", "Verify ca a mers Search Flights - loading page"); // only if is not ok , is shown this message
-
-
-
+       Assert.assertEquals(flights.findAFlight(), "Recommended departing flights", "Verify ca a mers Search Flights - loading page"); // only if is not ok , is shown this message
     }
 
 

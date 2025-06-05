@@ -148,10 +148,9 @@ public class HW02FlightsRefactor {
 
 
         driver.findElement(By.xpath("//td[@aria-label='" + startDateString + "']")).click();
-
         driver.findElement(By.xpath("//td[@aria-label='" + endDateString + "']")).click();
 
-
+     System.out.println("AAAAAAAAAAAAAA = " + "//td[@aria-label='" + startDateString + "']");
         Thread.sleep(1000);
 
 
