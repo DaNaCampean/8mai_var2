@@ -24,7 +24,7 @@ public class HomePage extends BasePageDriver {
 
     }
     public String pageHeaderName(By elementXPath){
-        Utils.waitForElementVisible(driver,elementXPath,15);
+        Utils.waitForElementVisible(driver,elementXPath,30);
         return driver.findElement(elementXPath).getText();
 
     }

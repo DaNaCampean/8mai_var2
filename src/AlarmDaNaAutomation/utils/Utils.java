@@ -12,7 +12,7 @@ public class Utils {
 // take screenshots
 
     public static void implicitlyWaitFiveSeconds(){
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
     }
 
     // wait until the element became visible

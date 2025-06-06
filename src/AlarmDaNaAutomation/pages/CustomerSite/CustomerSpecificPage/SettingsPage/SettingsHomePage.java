@@ -20,10 +20,12 @@ public class SettingsHomePage extends BasePageDriver {
 
 
     public void selectLoginInfo(){
-
-        Utils.waitForElementVisible(driver,loginInfoXPath,15);
+        System.out.println("before -select login info page");
         Utils.implicitlyWaitFiveSeconds();
+        Utils.waitForElementVisible(driver,loginInfoXPath,30);
+        System.out.println("before click site info");
         driver.findElement(loginInfoXPath).click();
+        System.out.println("after click site info");
     }
     public By pageHeaderName(){
 

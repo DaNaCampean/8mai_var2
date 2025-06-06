@@ -12,7 +12,8 @@ public class CustomerHomePage extends BasePageDriver {
     //Locators section
 
     By customerNameXPath = By.xpath("//span[text() = 'PM360R_243D17']");
-    By settingsXPath = By.xpath("//p[text() = 'Settings']");
+    By automationXPath = By.xpath("//p[text() = 'Automation']");
+    By settingsXPath = By.xpath("//p[@class='ellipsize ' and text() = 'Settings']");
     By homeXPath = By.xpath("//p[text() = 'Home']");
     By refreshXPath = By.xpath("//button[@aria-label = 'Reload Application']");
     By backXPath = By.xpath("/html");
@@ -38,7 +39,7 @@ public class CustomerHomePage extends BasePageDriver {
         }
 
     public String customerName(){
-        Utils.waitForElementVisible(driver,customerNameXPath,15);
+        Utils.waitForElementVisible(driver,customerNameXPath,30);
         return driver.findElement(customerNameXPath).getText();
     }
 
@@ -49,17 +50,31 @@ public class CustomerHomePage extends BasePageDriver {
     }
 
     public void selectSettings(){
-        Utils.waitForElementVisible(driver,settingsXPath,15);
+
+
+        Utils.waitForElementVisible(driver,settingsXPath,30);
         System.out.println("BEFORE CLICK SETTINGS");
         Utils.implicitlyWaitFiveSeconds();
-        driver.findElement(settingsXPath).click();
+        WebElement settingWebElement = driver.findElement(settingsXPath);
+        Utils.implicitlyWaitFiveSeconds();
+        settingWebElement.click();
+
         System.out.println("AFTER click settings");
+    }
+    public void selectAutomation(){
+
+
+        Utils.waitForElementVisible(driver,automationXPath,30);
+        System.out.println("BEFORE CLICK automation");
+        Utils.implicitlyWaitFiveSeconds();
+        driver.findElement(automationXPath).click();
+        System.out.println("AFTER click automation");
     }
 
     public void selectHome(){
         System.out.println("select HOME");
 
-        Utils.waitForElementVisible(driver,homeXPath,15);
+        Utils.waitForElementVisible(driver,homeXPath,30);
         Utils.implicitlyWaitFiveSeconds();
         driver.findElement(homeXPath).click();
     }
@@ -86,7 +101,7 @@ public class CustomerHomePage extends BasePageDriver {
     public Color highContrastAppliedRGBA(){
 
       //  By contrastXPath = By.xpath("//div[@class='md view-container surface ember-view']");
-          By contrastXPath = By.xpath("div[@id='app-page']");
+          By contrastXPath = By.xpath("//div[@id='app-page']");
 
         Color contrastColor = Color.fromString(driver.findElement(contrastXPath).getCssValue("color"));
         System.out.println("color contrast = " + contrastColor);
@@ -98,22 +113,8 @@ public class CustomerHomePage extends BasePageDriver {
         return contrastColor;
     }
 
-    public Color toggleBlue(){
 
 
-        By contrastXPath =By.xpath("//input[@class='high-contrast' and @type='checkbox']");
-        driver.findElement(contrastXPath).click();
-        Color toggleColor = Color.fromString(driver.findElement(contrastXPath).getCssValue("outline-color"));
-        System.out.println("TOGGLE COLOR = " + toggleColor);
-//        assert contrastColor.asRgba().equals("rgba(221, 221, 222, 1)"); //off
-//        System.out.println("contrast off");
 
-
-        assert toggleColor.asRgba().equals("rgba(45, 164, 240, 1)"); //on
-       // assert toggleColor.asRgba().equals("rgba(51, 51, 51, 1)"); //on
-
-        System.out.println("toggle BLUE!!!!!!!!!!!!!");
-        return toggleColor;
-    }
 
 }

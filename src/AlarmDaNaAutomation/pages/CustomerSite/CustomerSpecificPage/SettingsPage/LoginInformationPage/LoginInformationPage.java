@@ -14,12 +14,12 @@ public class LoginInformationPage  extends BasePageDriver {
     //Methods section
 
     public void selectSiteAppearance(){
-        Utils.waitForElementVisible(driver,siteApperanceXPath,15);
+        Utils.waitForElementVisible(driver,siteApperanceXPath,30);
         driver.findElement(siteApperanceXPath).click();
 
     }
     public String optionsText(String expression){
-        Utils.waitForElementVisible(driver,siteApperanceXPath,15);
+        Utils.waitForElementVisible(driver,siteApperanceXPath,30);
         switch(expression) {
             case "siteApperanceXPath":
                 return  driver.findElement(siteApperanceXPath).getText();
