@@ -18,8 +18,6 @@ public class SiteAppearancePage extends BasePageDriver {
     By saveButtonXPath = By.xpath("//span[text() = 'Save']");
     By notificationSave = By.xpath("//p[@class='notification-text' and text()='Your preferences have been updated.']");
 
-
-
     //Methods section
 
     public String returnAttributeDarkMode(String attribute){

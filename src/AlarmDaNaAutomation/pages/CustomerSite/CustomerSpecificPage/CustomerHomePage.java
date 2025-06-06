@@ -1,6 +1,8 @@
 package AlarmDaNaAutomation.pages.CustomerSite.CustomerSpecificPage;
 
 import AlarmDaNaAutomation.base.BasePageDriver;
+import AlarmDaNaAutomation.pages.CustomerSite.CustomerSpecificPage.SettingsPage.LoginInformationPage.LoginInformationPage;
+import AlarmDaNaAutomation.pages.CustomerSite.CustomerSpecificPage.SettingsPage.LoginInformationPage.SiteAppearancePage;
 import AlarmDaNaAutomation.utils.Utils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -94,6 +96,24 @@ public class CustomerHomePage extends BasePageDriver {
         assert contrastColor.asRgba().equals("rgba(255, 255, 255, 1)"); //on
         System.out.println("contrast ON");
         return contrastColor;
+    }
+
+    public Color toggleBlue(){
+
+
+        By contrastXPath =By.xpath("//input[@class='high-contrast' and @type='checkbox']");
+        driver.findElement(contrastXPath).click();
+        Color toggleColor = Color.fromString(driver.findElement(contrastXPath).getCssValue("outline-color"));
+        System.out.println("TOGGLE COLOR = " + toggleColor);
+//        assert contrastColor.asRgba().equals("rgba(221, 221, 222, 1)"); //off
+//        System.out.println("contrast off");
+
+
+        assert toggleColor.asRgba().equals("rgba(45, 164, 240, 1)"); //on
+       // assert toggleColor.asRgba().equals("rgba(51, 51, 51, 1)"); //on
+
+        System.out.println("toggle BLUE!!!!!!!!!!!!!");
+        return toggleColor;
     }
 
 }
