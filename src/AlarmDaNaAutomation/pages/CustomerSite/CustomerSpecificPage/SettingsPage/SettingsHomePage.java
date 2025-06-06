@@ -20,7 +20,9 @@ public class SettingsHomePage extends BasePageDriver {
 
 
     public void selectLoginInfo(){
+
         Utils.waitForElementVisible(driver,loginInfoXPath,15);
+        Utils.implicitlyWaitFiveSeconds();
         driver.findElement(loginInfoXPath).click();
     }
     public By pageHeaderName(){

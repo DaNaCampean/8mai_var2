@@ -4,6 +4,7 @@ import AlarmDaNaAutomation.base.BasePageDriver;
 import AlarmDaNaAutomation.utils.Utils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.Color;
 
 public class CustomerHomePage extends BasePageDriver {
     //Locators section
@@ -17,8 +18,8 @@ public class CustomerHomePage extends BasePageDriver {
 
     //Methods section
 
-    public String colorTheme(){
-        // Locate the <html> element
+    public String colorScheme(){
+        // Locate the <html> element . Checking color-scheme
         WebElement htmlElement = driver.findElement(backXPath);
         String colorTheme="";
 
@@ -47,11 +48,17 @@ public class CustomerHomePage extends BasePageDriver {
 
     public void selectSettings(){
         Utils.waitForElementVisible(driver,settingsXPath,15);
+        System.out.println("BEFORE CLICK SETTINGS");
+        Utils.implicitlyWaitFiveSeconds();
         driver.findElement(settingsXPath).click();
+        System.out.println("AFTER click settings");
     }
 
     public void selectHome(){
+        System.out.println("select HOME");
+
         Utils.waitForElementVisible(driver,homeXPath,15);
+        Utils.implicitlyWaitFiveSeconds();
         driver.findElement(homeXPath).click();
     }
 
@@ -59,6 +66,34 @@ public class CustomerHomePage extends BasePageDriver {
         driver.findElement(refreshXPath).click();
         Utils.implicitlyWaitFiveSeconds();
         System.out.println("refreshhhh");
+    }
+
+    public Color darkModeAppliedRGBA(){
+        By backgroundColor = By.xpath("//body[contains(@class,'base-background ember-application')]");
+
+        Color backgroundColour = Color.fromString(driver.findElement(backgroundColor).getCssValue("background-color"));
+        System.out.println("color = " + backgroundColour);
+        assert backgroundColour.asRgba().equals("rgba(5, 5, 5, 1)"); //dark
+        //assert backgroundColour.asRgba().equals("rgba(240, 240, 240, 1)"); //light
+
+        System.out.println("ok background");
+        return backgroundColour;
+
+    }
+
+    public Color highContrastAppliedRGBA(){
+
+      //  By contrastXPath = By.xpath("//div[@class='md view-container surface ember-view']");
+          By contrastXPath = By.xpath("div[@id='app-page']");
+
+        Color contrastColor = Color.fromString(driver.findElement(contrastXPath).getCssValue("color"));
+        System.out.println("color contrast = " + contrastColor);
+//        assert contrastColor.asRgba().equals("rgba(221, 221, 222, 1)"); //off
+//        System.out.println("contrast off");
+
+        assert contrastColor.asRgba().equals("rgba(255, 255, 255, 1)"); //on
+        System.out.println("contrast ON");
+        return contrastColor;
     }
 
 }

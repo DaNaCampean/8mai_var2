@@ -56,32 +56,7 @@ public class SiteAppearancePage extends BasePageDriver {
         return driver.findElement(notificationSave).getText();
     }
 
-    public void backToggle(){
-        // <body class="base-background ember-application dark">
-        //<body class="base-background ember-application">
-       // By backgroundColor = By.xpath("//body[contains(@class,'dark')]");
-        By backgroundColor = By.xpath("//body[contains(@class,'base-background ember-application')]");
 
-       // Color RGBA_COLOUR = Color.fromString("rgba(5, 5, 5, 1)");
-        Color loginButtonBackgroundColour = Color.fromString(driver.findElement(backgroundColor).getCssValue("background-color"));
-        System.out.println("color = " + loginButtonBackgroundColour);
-        assert loginButtonBackgroundColour.asRgba().equals("rgba(5, 5, 5, 1)"); //dark
-        //assert loginButtonBackgroundColour.asRgba().equals("rgba(240, 240, 240, 1)"); //light
-
-        System.out.println("ok background");
-        System.out.println("contrast on");
-
-        //CONTRAST
-        By contrastXPath = By.xpath("//div[@class='md view-container surface ember-view']");
-
-        Color contrastColor = Color.fromString(driver.findElement(contrastXPath).getCssValue("color"));
-        System.out.println("color contrast = " + contrastColor);
-//        assert contrastColor.asRgba().equals("rgba(221, 221, 222, 1)"); //off
-//        System.out.println("contrast off");
-
-         assert contrastColor.asRgba().equals("rgba(255, 255, 255, 1)"); //on
-        System.out.println("contrast ON");
-    }
 
 
 
