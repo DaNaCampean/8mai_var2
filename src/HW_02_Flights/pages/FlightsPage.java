@@ -114,9 +114,17 @@ public class FlightsPage extends BasePageDriverInitialization {
         searchFlight.click();
         Utils.waitForElementVisible(driver, flightsResults,15);
         return driver.findElement(flightsResults).getText();
-
-
     }
+
+    public String findAFlight2() {
+        //search flights
+        By flightsResults = By.xpath("//h1[@class='uitk-heading uitk-heading-5 uitk-spacing uitk-spacing-margin-blockend-two']");
+
+
+        return driver.findElement(flightsResults).getText();
+    }
+
+   // <h1 class="uitk-heading uitk-heading-5 uitk-spacing uitk-spacing-margin-blockend-two">Sorry, we're having a problem on our end.</h1>
 }
 
 

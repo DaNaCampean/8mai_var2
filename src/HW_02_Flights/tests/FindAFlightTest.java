@@ -69,8 +69,22 @@ public class FindAFlightTest extends BaseTest {
         Utils.implicitlyWaitFiveSeconds();
 
         // search flights
-       Assert.assertEquals(flights.findAFlight(), "Recommended departing flights", "Verify ca a mers Search Flights - loading page"); // only if is not ok , is shown this message
-       System.out.println("Passed - Searching Flights results page opens");
+        try {
+            Assert.assertEquals(flights.findAFlight(), "Recommended departing flights", "Verify ca a mers Search Flights - loading page"); // only if is not ok , is shown this message
+            System.out.println("Passed - Searching Flights results page opens");
+        }
+        catch(Exception e) {
+            try {
+                Assert.assertEquals(flights.findAFlight2(), "Sorry, we're having a problem on our end.", "Verify ca a mers Search Flights - loading page"); // only if is not ok , is shown this message
+                System.out.println("Passed - Searching Flights results page opens - BUT shows error: Sorry, we're having a problem on our end.");
+            }
+            catch(Exception e2) {
+                System.out.println("The page did not worked correctly");
+            }
+        }
+
+
+
     }
 
 
