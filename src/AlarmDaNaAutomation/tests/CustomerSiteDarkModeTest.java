@@ -39,128 +39,128 @@ public class CustomerSiteDarkModeTest extends BaseTest{
     }
 
 
-//    @Test
-//    public void darkModeSiteAppearance() {
-//
-//       System.out.println("TEST CASE: CX-T1557 - Dark Mode: Permission for customers associated with dealer 1/1115");
-//
-//        BaseURLs.goToCustomerSiteURL();
-//        // Verify that correct URL, alarm.com opens.
-//        String myURL = home.getUrl();
-//        // System.out.println("URL = " + myURL);
-//        Assert.assertEquals(myURL, "https://international.alarm.com/adc/", "Verified that the correct page was shown, by URL");
-//        System.out.println("STEP 1 - Passed - correct URL (ALARM HOME PAGE): " + myURL + " opens");
-//
-//        //click on Sign In button
-//        home.clickSignIn();
-//        myURL = login.getUrl();
-//        Assert.assertEquals(myURL, "https://www.alarm.com/login.aspx", "Verified that the correct LogIn page was shown, by URL");
-//        System.out.println("STEP 2 - Passed - correct URL(SIGN IN): " + myURL + " opens");
-//
-//        //Step: Login to customer site
-//        //Expected Result: Verify logged into customer site
-//        login.signInWithCredentials();
-//        String customerSiteName = (customer.customerName());
-//        Assert.assertEquals(customerSiteName, "PM360R_243D17", "Verified that the correct customer page opens, by cuatomer name ");
-//        System.out.println("STEP 3 - Passed - correct Customer account LOGGED IN: " + customerSiteName + " opens");
-//
-//        //Step: Navigate to Settings --> Login Information
-//        //Expected Result: Verify page loads
-//
-//        settings.selectSettings();
-//        By headerNameBy = settings.pageHeaderName();
-//        String headerName = home.pageHeaderName(headerNameBy);
-//        Assert.assertEquals(headerName, "Settings", "Verified that the correct  page opens, by page header ");
-//        System.out.println("STEP 4 - Passed - correct page: " + headerName + " opens");
-//
-//        settings.selectLoginInfo();
-//        headerNameBy = loginInformation.pageHeaderName();
-//        headerName = home.pageHeaderName(headerNameBy);
-//
-//        Assert.assertEquals(headerName, "Login Information", "Verified that the correct  page opens, by page header ");
-//        System.out.println("STEP 5 - Passed - correct page: " + headerName + " opens");
-//
-//        //Step: Look at options under “Login Information”
-//        // Expected Result: Verify “Site Appearance” is listed as an option
-//
-//        String optionsToFind = loginInformation.optionsText("siteApperanceXPath");
-//        Assert.assertEquals(optionsToFind, "Site Appearance", "Verified that Site Appearance option is available ");
-//        System.out.println("STEP 6 - Passed - Correct option is available on the page: " + optionsToFind);
-//
-//
-//
-//    }
+    @Test
+    public void darkModeSiteAppearance() {
+
+       System.out.println("TEST CASE: CX-T1557 - Dark Mode: Permission for customers associated with dealer 1/1115");
+
+        BaseURLs.goToCustomerSiteURL();
+        // Verify that correct URL, alarm.com opens.
+        String myURL = home.getUrl();
+        // System.out.println("URL = " + myURL);
+        Assert.assertEquals(myURL, "https://international.alarm.com/adc/", "Verified that the correct page was shown, by URL");
+        System.out.println("STEP 1 - Passed - correct URL (ALARM HOME PAGE): " + myURL + " opens");
+
+        //click on Sign In button
+        home.clickSignIn();
+        myURL = login.getUrl();
+        Assert.assertEquals(myURL, "https://www.alarm.com/login.aspx", "Verified that the correct LogIn page was shown, by URL");
+        System.out.println("STEP 2 - Passed - correct URL(SIGN IN): " + myURL + " opens");
+
+        //Step: Login to customer site
+        //Expected Result: Verify logged into customer site
+        login.signInWithCredentials();
+        String customerSiteName = (customer.customerName());
+        Assert.assertEquals(customerSiteName, "PM360R_243D17", "Verified that the correct customer page opens, by cuatomer name ");
+        System.out.println("STEP 3 - Passed - correct Customer account LOGGED IN: " + customerSiteName + " opens");
+
+        //Step: Navigate to Settings --> Login Information
+        //Expected Result: Verify page loads
+
+        customer.selectSettings();
+        By headerNameBy = settings.pageHeaderName();
+        String headerName = home.pageHeaderName(headerNameBy);
+        Assert.assertEquals(headerName, "Settings", "Verified that the correct  page opens, by page header ");
+        System.out.println("STEP 4 - Passed - correct page: " + headerName + " opens");
+
+        settings.selectLoginInfo();
+        headerNameBy = loginInformation.pageHeaderName();
+        headerName = home.pageHeaderName(headerNameBy);
+
+        Assert.assertEquals(headerName, "Login Information", "Verified that the correct  page opens, by page header ");
+        System.out.println("STEP 5 - Passed - correct page: " + headerName + " opens");
+
+        //Step: Look at options under “Login Information”
+        // Expected Result: Verify “Site Appearance” is listed as an option
+
+        String optionsToFind = loginInformation.optionsText("siteApperanceXPath");
+        Assert.assertEquals(optionsToFind, "Site Appearance", "Verified that Site Appearance option is available ");
+        System.out.println("STEP 6 - Passed - Correct option is available on the page: " + optionsToFind);
 
 
 
-//    @Test
-//    public void darkModeToogle() {
-//
-//        System.out.println("\n");
-//        System.out.println("TEST CASE: CX-T1556 (1.0)Dark Mode: Toggling Dark Mode ON/OFF (Functional)");
-//
-//        //STEP 1:  Login to customer site
-//        // Expected Result: Verify logged into customer site
-//
-//        BaseURLs.goToCustomerSiteURL();
-//        home.clickSignIn();
-//        login.signInWithCredentials();
-//        String customerSiteName = (customer.customerName());
-//        Assert.assertEquals(customerSiteName, "PM360R_243D17", "Verified that the correct customer page opens, by cuatomer name ");
-//        System.out.println("STEP 1 - Passed - correct Customer account LOGGED IN: " + customerSiteName + " opens");
-//
-//
-//        //STEP 2:  Click Settings in left nav menu
-//        //Expected Result: Verify Settings page loads
-//
-//        settings.selectSettings();
-//        By headerNameBy = settings.pageHeaderName();
-//        String headerName = home.pageHeaderName(headerNameBy);
-//        Assert.assertEquals(headerName, "Settings", "Verified that the correct  page opens, by page header ");
-//        System.out.println("STEP 2 - Passed - correct page: " + headerName + " opens");
-//
-//        //STEP 3:  Click “Login Information” and then click “Site Appearance”
-//        //Expected Result: Verify Site Appearance page loads and displays 2 toggle buttons (one for dark mode and one for high contrast)
-//
-//        settings.selectLoginInfo();
-//        loginInformation.selectSiteAppearance();
-//        headerNameBy = siteAppearance.pageHeaderName();
-//        headerName = home.pageHeaderName(headerNameBy);
-//
-//        Assert.assertEquals(headerName, "Site Appearance", "Verified that the correct  page opens, by page header ");
-//        System.out.println("STEP 3.1 - Passed - correct page: " + headerName + " opens");
-//
-//       // and displays 2 toggle buttons (one for dark mode and one for high contrast)
-//
-//        String attribute = siteAppearance.returnAttributeDarkMode("type");
-//        Assert.assertEquals(attribute, "checkbox", "Verified that there is a toogle button for Dark Mode, by getDomAttribute ");
-//        System.out.println("STEP 3.2 - Passed - there is a toogle button for Dark Mode ");
-//
-//        attribute = siteAppearance.returnAttributeContrast();
-//        Assert.assertEquals(attribute, "checkbox", "Verified that there is a toogle button for High Contrast, by getDomAttribute ");
-//        System.out.println("STEP 3.3 - Passed - there is a toogle button for High Contrast ");
-//
-//        //STEP 4: Step Click toggle for Dark Mode to on/enabled
-//        //Expected Result: Verify toggle UI change (should turn blue)
-//
-//        siteAppearance.darkModeClick();
-//        attribute = siteAppearance.returnAttributeDarkMode("data-checked");
-//        Assert.assertEquals(attribute, "true", "Verified that the toogle button for dark Mode is ON/ENABLED, by getDomAttribute ");
-//        System.out.println("STEP 4 - Passed - The toogle button for DARK MODE is ON/ENABLED");
-//
-//        System.out.println("DON'T KNOW HOW TO SEE IF IT IS BLUE");
-//
-//        //STEP5:  Click toggle for Dark Mode to off/disabled
-//        //Expected Result: Verify toggle UI change (color should change to black)
-//
-//        siteAppearance.darkModeClick();
-//        attribute = siteAppearance.returnAttributeDarkMode("data-checked");
-//        Assert.assertEquals(attribute, "false", "Verified that the toogle button for dark Mode is OFF/DISABLED, by getDomAttribute ");
-//        System.out.println("STEP 5 - Passed - The toogle button for DARK MODE is OFF/DISABLED");
-//
-//        System.out.println("DON'T KNOW HOW TO SEE IF IT IS black");
-//
-//    }
+    }
+
+
+
+    @Test
+    public void darkModeToogle() {
+
+        System.out.println("\n");
+        System.out.println("TEST CASE: CX-T1556 (1.0)Dark Mode: Toggling Dark Mode ON/OFF (Functional)");
+
+        //STEP 1:  Login to customer site
+        // Expected Result: Verify logged into customer site
+
+        BaseURLs.goToCustomerSiteURL();
+        home.clickSignIn();
+        login.signInWithCredentials();
+        String customerSiteName = (customer.customerName());
+        Assert.assertEquals(customerSiteName, "PM360R_243D17", "Verified that the correct customer page opens, by cuatomer name ");
+        System.out.println("STEP 1 - Passed - correct Customer account LOGGED IN: " + customerSiteName + " opens");
+
+
+        //STEP 2:  Click Settings in left nav menu
+        //Expected Result: Verify Settings page loads
+
+        customer.selectSettings();
+        By headerNameBy = settings.pageHeaderName();
+        String headerName = home.pageHeaderName(headerNameBy);
+        Assert.assertEquals(headerName, "Settings", "Verified that the correct  page opens, by page header ");
+        System.out.println("STEP 2 - Passed - correct page: " + headerName + " opens");
+
+        //STEP 3:  Click “Login Information” and then click “Site Appearance”
+        //Expected Result: Verify Site Appearance page loads and displays 2 toggle buttons (one for dark mode and one for high contrast)
+
+        settings.selectLoginInfo();
+        loginInformation.selectSiteAppearance();
+        headerNameBy = siteAppearance.pageHeaderName();
+        headerName = home.pageHeaderName(headerNameBy);
+
+        Assert.assertEquals(headerName, "Site Appearance", "Verified that the correct  page opens, by page header ");
+        System.out.println("STEP 3.1 - Passed - correct page: " + headerName + " opens");
+
+       // and displays 2 toggle buttons (one for dark mode and one for high contrast)
+
+        String attribute = siteAppearance.returnAttributeDarkMode("type");
+        Assert.assertEquals(attribute, "checkbox", "Verified that there is a toogle button for Dark Mode, by getDomAttribute ");
+        System.out.println("STEP 3.2 - Passed - there is a toogle button for Dark Mode ");
+
+        attribute = siteAppearance.returnAttributeContrast("type");
+        Assert.assertEquals(attribute, "checkbox", "Verified that there is a toogle button for High Contrast, by getDomAttribute ");
+        System.out.println("STEP 3.3 - Passed - there is a toogle button for High Contrast ");
+
+        //STEP 4: Step Click toggle for Dark Mode to on/enabled
+        //Expected Result: Verify toggle UI change (should turn blue)
+
+        siteAppearance.darkModeClick();
+        attribute = siteAppearance.returnAttributeDarkMode("data-checked");
+        Assert.assertEquals(attribute, "true", "Verified that the toogle button for dark Mode is ON/ENABLED, by getDomAttribute ");
+        System.out.println("STEP 4 - Passed - The toogle button for DARK MODE is ON/ENABLED");
+
+        System.out.println("DON'T KNOW HOW TO SEE IF IT IS BLUE");
+
+        //STEP5:  Click toggle for Dark Mode to off/disabled
+        //Expected Result: Verify toggle UI change (color should change to black)
+
+        siteAppearance.darkModeClick();
+        attribute = siteAppearance.returnAttributeDarkMode("data-checked");
+        Assert.assertEquals(attribute, "false", "Verified that the toogle button for dark Mode is OFF/DISABLED, by getDomAttribute ");
+        System.out.println("STEP 5 - Passed - The toogle button for DARK MODE is OFF/DISABLED");
+
+        System.out.println("DON'T KNOW HOW TO SEE IF IT IS black");
+
+    }
 
     @Test
     public void togglingDarkModeOnOffFunctional() {
@@ -332,6 +332,7 @@ public class CustomerSiteDarkModeTest extends BaseTest{
         assert colorcheck.asRgba().equals("rgba(255, 255, 255, 1)"); //on
         System.out.println("STEP 8.4.2 - Passed - The High Contrast is still applied after refresh, by checking color css element using rgba function ");
 
+        customer.logOut();
     }
 }
 

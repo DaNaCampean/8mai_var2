@@ -23,6 +23,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.interactions.Interaction;
 
 import java.text.SimpleDateFormat;
+import java.time.Duration;
 import java.util.Calendar;
 import java.util.concurrent.TimeUnit;
 import java.time.LocalDateTime;
@@ -83,7 +84,7 @@ public class LearningCalendar {
         driver.manage().window().maximize();
         driver.get("https://www.hotwire.com/");
 
-        driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
 
         //click on Flights tab - double click
         WebElement flightsClick = driver.findElement(By.xpath("//div[@data-bdd = 'farefinder-option-flights' and @class = 'farefinder-option inactive']"));

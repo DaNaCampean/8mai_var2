@@ -4,9 +4,13 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
+import java.time.Duration;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 import java.util.HashMap;
+
+import static AlarmDaNaAutomation.base.BasePageDriver.driver;
+import static java.util.concurrent.TimeUnit.SECONDS;
 
 public class Page {
 
@@ -48,8 +52,8 @@ public class Page {
             driver = new ChromeDriver(options);
             driver.get("http://zoho.com");
             driver.manage().window().maximize();
-            driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
             menu = new TopMenu(driver);
 
         }

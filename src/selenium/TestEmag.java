@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import java.time.Duration;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -29,7 +30,7 @@ public class TestEmag {
                 driver.manage().window().maximize();
 
                 // Așteaptă 2 secunde pentru ca pagina să se încarce
-                driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
+                driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
 
                 // Găsește bara de căutare utilizând XPath
                 WebElement searchBox = driver.findElement(By.xpath("//input[@name='query']"));
@@ -39,7 +40,7 @@ public class TestEmag {
                 searchBox.submit();
 
                 // Așteaptă pentru rezultate
-                driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+                driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
 
                 // Găsește toate aspiratoarele listate utilizând XPath
                 List<WebElement> aspirators = driver.findElements(By.xpath("//div[@class='js-products-container card-collection list-view-updated show-me-a-grid']/a"));

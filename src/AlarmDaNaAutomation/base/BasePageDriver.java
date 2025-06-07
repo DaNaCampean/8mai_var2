@@ -20,6 +20,12 @@ public class BasePageDriver {
         }
     }
 
+    public static void driverSetUpMac(){
+        System.out.println("Using MacBook Air");
+        System.setProperty("webdriver.chrome.driver", "/Users/dana/IdeaProjects/AutomationFiles/chromedriver-mac-arm64/chromedriver");
+
+    }
+
     public static void driverSetUpWindows(){
         //System.setProperty("webdriver.chrome.driver", "D:\\Backup Softvision\\AUTOMATION STUFF\\selenium\\chromedriver-win64\\chromedriver.exe");
         System.out.println("Using Windows Dell");

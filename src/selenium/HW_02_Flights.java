@@ -21,6 +21,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.interactions.Actions;
 
+import java.time.Duration;
 import java.util.concurrent.TimeUnit;
 
 public class HW_02_Flights {
@@ -43,7 +44,7 @@ public class HW_02_Flights {
         driver.manage().window().maximize();
         driver.get("https://www.hotwire.com/");
 
-        driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
 
         WebElement flightsClick = driver.findElement(By.xpath("//div[@data-bdd = 'farefinder-option-flights' and @class = 'farefinder-option inactive']"));
       //  flightsClick.click();

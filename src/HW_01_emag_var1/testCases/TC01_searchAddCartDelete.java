@@ -1,7 +1,11 @@
 package HW_01_emag_var1.testCases;
 
 import org.openqa.selenium.WebDriver;
+
+import java.time.Duration;
 import java.util.concurrent.TimeUnit;
+
+import static AlarmDaNaAutomation.base.BasePageDriver.driver;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
@@ -52,7 +56,7 @@ public class TC01_searchAddCartDelete {
         System.out.println("PASSED - search results page is displayed");
 
         // Așteaptă pentru rezultate - daca nu pun asta.... nu imi gaseste urmatorul XPath
-        driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
 
         // get data for assert - aspirator name from search page
         String dataName = search.returnDataName();

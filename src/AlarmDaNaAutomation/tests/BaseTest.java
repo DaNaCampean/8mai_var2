@@ -20,7 +20,8 @@ public class BaseTest {
     @BeforeSuite
     public void initDriver(){
 
-        BasePageDriver.driverSetUpWindows();
+        //BasePageDriver.driverSetUpWindows();
+        BasePageDriver.driverSetUpMac();
 
     }
 

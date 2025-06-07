@@ -14,6 +14,8 @@ public class HomePage extends BasePageDriver {
     By signInButtonXPath = By.xpath("//a[.//span[normalize-space(text())='LOGIN']]");
 // need an xpath more ok, ca asta are x results
 
+
+
 //public void open() {
 //    driver.get("https://international.alarm.com/adc/");
 //}
@@ -28,6 +30,8 @@ public class HomePage extends BasePageDriver {
         return driver.findElement(elementXPath).getText();
 
     }
+
+
 
 }
 

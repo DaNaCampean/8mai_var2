@@ -18,9 +18,15 @@ public class CustomerHomePage extends BasePageDriver {
     By refreshXPath = By.xpath("//button[@aria-label = 'Reload Application']");
     By backXPath = By.xpath("/html");
 
-
+    By loginInfoNameXPath = By.xpath("//h1[text() = 'Login Information']");
+    By logOutButtonXPath = By.xpath("//span[text()='Log out']");
     //Methods section
 
+    public void logOut(){
+        driver.findElement(logOutButtonXPath).click();
+
+
+    }
     public String colorScheme(){
         // Locate the <html> element . Checking color-scheme
         WebElement htmlElement = driver.findElement(backXPath);
@@ -74,7 +80,7 @@ public class CustomerHomePage extends BasePageDriver {
     public void selectHome(){
         System.out.println("select HOME");
 
-        Utils.waitForElementVisible(driver,homeXPath,30);
+        Utils.waitForElementVisible(driver,loginInfoNameXPath,30);
         Utils.implicitlyWaitFiveSeconds();
         driver.findElement(homeXPath).click();
     }

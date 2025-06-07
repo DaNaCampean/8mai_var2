@@ -4,7 +4,10 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
+import java.time.Duration;
 import java.util.concurrent.TimeUnit;
+
+import static AlarmDaNaAutomation.base.BasePageDriver.driver;
 
 public class BasePage_driver_browser_init {
 
@@ -33,7 +36,7 @@ public class BasePage_driver_browser_init {
     }
 
     public static void waitResults() {
-        driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
     }
 
 

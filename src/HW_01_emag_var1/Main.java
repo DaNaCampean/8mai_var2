@@ -6,9 +6,11 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
+import java.time.Duration;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+import static AlarmDaNaAutomation.base.BasePageDriver.driver;
 import static org.testng.Assert.assertEquals;
 
 public class Main {
@@ -51,7 +53,7 @@ public class Main {
             //  searchField.sendKeys(Keys.RETURN);
 
             // Așteaptă pentru rezultate
-            driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
 
 
             // XPATH - search for aspiratoare
